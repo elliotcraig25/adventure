@@ -1,0 +1,41 @@
+.head-side-main {
+    background-color: slategray;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.head {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-main {
+    background-color: gray;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.side {
+    background-color: aqua;
+    height: 100%;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    background-color: darkgray;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
