@@ -1,0 +1,44 @@
+.navGraphic {
+    /* background-color: antiquewhite; */
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box {
+    background-color: aqua;
+    height: 50%;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links {
+    height: 100%;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.make {
+    background-color: aqua;
+    height: 75px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose {
+    background-color: aqua;
+    height: 75px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
