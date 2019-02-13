@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 // const sessions = require('express-session');
-const ctrl = require(`./controller`);
+const testCtrl = require(`./controllers/testcontroller`);
 
 const {
     SERVER_PORT, DB_CONNECTION, SESSIONT_SECRET
@@ -12,7 +12,7 @@ const app = express();
 
 app.use(express.json());
 
-// come back to sessions when i need it
+    // come back to sessions when i need it
 // app.use(sessions({
 //     secret: SESSIONT_SECRET,
 //     resave: false,
@@ -28,3 +28,7 @@ massive(DB_CONNECTION).then(db => {
         )
     })
 })
+
+app.get(`/test`, testCtrl.testa);
+
+app.post(`/getcategories`, testCtrl.getCategoryItems);

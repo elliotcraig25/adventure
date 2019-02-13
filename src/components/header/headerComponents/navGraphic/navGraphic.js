@@ -6,7 +6,7 @@ class NavGraphic extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            logedin: false
+            logedin: true
         };
     };
     render(){
@@ -16,7 +16,7 @@ class NavGraphic extends React.Component {
                     little box
                 </div>
                 <div className='links'>
-                    <Link to={this.state.logedin ? '/build' : '/play'}>     {/* /play needs to be changed once i've build a login screen */}
+                    <Link to={this.state.logedin ? '/build' : '/'}>     {/* /play needs to be changed once i've build a login screen */}
                         <div className='make'>
                             Make your own adventure
                         </div>
