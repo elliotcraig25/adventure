@@ -3,6 +3,7 @@ import './play.css';
 import axios from 'axios';
 
 import TitleAndName from './playComponents/titleAndName/titleAndName';
+import Scenario from './playComponents/scenario/scenario';
 
 class PlayComponents extends React.Component {
     constructor(props){
@@ -10,7 +11,6 @@ class PlayComponents extends React.Component {
         this.state = {
             adventureID: '',
             curZID: 'z',
-            playInfo: {},
             title: '',
             user: ''
         };
@@ -39,11 +39,10 @@ class PlayComponents extends React.Component {
                     <TitleAndName title={this.state.title} user={this.state.user}/>
                     <div>
                         <div>                            
-                            {/* scenario display component */}
-                            {/* options display component */}
+                            <Scenario id={this.state.adventureID}/> 
                         </div>
                         {/* character sheet component */}
-                    </div>
+                    </div> 
                 </div>
             </div>
         )
