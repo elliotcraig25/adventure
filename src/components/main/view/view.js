@@ -27,7 +27,7 @@ class ViewComponents extends React.Component {
     createCategories = ()=>{
         let category = this.state.categoryReturn.map((ele, i)=>{
             return (
-                    <CategoryContainer thumbNailInfo={ele} />
+                <CategoryContainer thumbNailInfo={ele} key={i}/>
             )
         })
         return category

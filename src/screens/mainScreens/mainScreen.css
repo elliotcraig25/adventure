@@ -30,12 +30,22 @@
     align-items: center;
 }
 
-.main {
+.main_view {
     background-color: darkgray;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
+}
+
+.main_play {
+    background-color: darkgray;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }

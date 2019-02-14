@@ -10,7 +10,7 @@ class Thumbnail extends React.Component {
         };
     };
     render(){
-        console.log(this.props.thumbnail) 
+        // console.log(this.props.thumbnail) 
         return (
             <Link to={`/play/${this.props.thumbnail.adventure_id}`}>
                 <div key={this.props.thumbnail.adventure_id} className='thumbnail'>

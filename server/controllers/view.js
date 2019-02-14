@@ -6,7 +6,7 @@ module.exports = {
         let category = await db.view.getCategories(
             {category_name: ele}
         );
-        console.log({category});
+        // console.log({category});
         res.status(200).send(category);
     }
 }

@@ -12,6 +12,7 @@ class PlayInterface extends React.Component {
         };
     };
     render(){
+        // console.log(this.props.match.params);
         return (
             <div className='head-side-main'>
                 <div className='head'>
@@ -21,8 +22,8 @@ class PlayInterface extends React.Component {
                     <div className='side'>
                         <Sidebar />
                     </div>
-                    <div className='main'>
-                        <PlayComponent />
+                    <div className='main_play'>
+                        <PlayComponent adventureID={this.props.match.params}/>
                     </div>
                 </div>
             </div>

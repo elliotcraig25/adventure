@@ -12,13 +12,13 @@ class CatgoryContainer extends React.Component {
     createThumbnail = ()=>{
         let thumbNail = this.props.thumbNailInfo.map((ele, i)=>{
             return (
-                <Thumbnail thumbnail={ele} />
+                <Thumbnail thumbnail={ele} key={i}/>
             )
         })
         return thumbNail
     }
     render(){
-        console.log(this.props.thumbNailInfo)
+        // console.log(this.props.thumbNailInfo)
         return (
             <div className='category_container'>
                 <div className='category_child'>

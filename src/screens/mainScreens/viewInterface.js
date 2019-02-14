@@ -21,7 +21,7 @@ class ViewInterface extends React.Component {
                     <div className='side'>
                         <Sidebar />
                     </div>
-                    <div className='main'>
+                    <div className='main_view'>
                         <ViewComponent />
                     </div>
                 </div>

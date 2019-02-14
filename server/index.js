@@ -4,6 +4,7 @@ const massive = require('massive');
 // const sessions = require('express-session');
 const testCtrl = require(`./controllers/testcontroller`);
 const viewCtrl = require(`./controllers/view`);
+const playCtrl = require(`./controllers/play`);
 
 const {
     SERVER_PORT, DB_CONNECTION, SESSIONT_SECRET
@@ -33,3 +34,5 @@ massive(DB_CONNECTION).then(db => {
 app.get(`/test`, testCtrl.testa);
 
 app.post(`/getcategories`, viewCtrl.getCategoryItems);
+
+app.get(`/playinfo/:id`, playCtrl.getPlayInfo)
