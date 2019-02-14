@@ -1,0 +1,14 @@
+.categories_a {
+    background-color: darkgray;
+    border-top: solid black 1px;
+    padding-top: 5px;
+    width: 90%;
+    height: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    overflow: scroll;
+    /* align-self: flex-end; */
+    justify-self: flex-end;
+}

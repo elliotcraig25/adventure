@@ -1,4 +1,4 @@
-select cn.category_title, advt.adventure_title, ui.username
+select cn.category_title, advt.adventure_title, ui.username, acon.adventure_id
 from category_name cn
 join adventure_category ac
 on cn.category_id = ac.category_id

@@ -1,0 +1,29 @@
+.category_container {
+    /* height: 100px; */
+    width: calc(100% - 10px);
+    margin-bottom: 10px;
+    background-color: tomato;
+    /* display: flex;
+    flex-direction: column; */
+    flex-direction: column;
+}
+
+.category_child {
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail_container {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    align-items: center;
+}
+
+.category_title  {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    margin-left: 5px;
+}
