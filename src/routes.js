@@ -8,6 +8,6 @@ export default (
     <Switch>
         <Route exact path='/' component={ViewInterface} />
         <Route path='/build' component={BuildInterface} />
-        <Route path='/play' component={PlayInterface} />
+        <Route path='/play/:adventure_id' component={PlayInterface} />
     </Switch>
 )
