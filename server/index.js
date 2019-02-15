@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
-// const sessions = require('express-session');
+const sessions = require('express-session');
 const testCtrl = require(`./controllers/testcontroller`);
 const viewCtrl = require(`./controllers/view`);
 const playCtrl = require(`./controllers/play`);
@@ -15,13 +15,12 @@ const app = express();
 
 app.use(express.json());
 
-    // come back to sessions when i need it
-// app.use(sessions({
-//     secret: SESSIONT_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     maxAge: null 
-// }));
+app.use(sessions({
+    secret: SESSIONT_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    maxAge: null 
+}));
 
 massive(DB_CONNECTION).then(db => {
     app.set('db', db);
@@ -40,4 +39,12 @@ app.get(`/playinfo/:id`, playCtrl.getPlayInfo);
 
 app.get(`/api/abcdoption/:aid/:zid`, playCtrl.getOption);
 
-app.post(`/api/user`, userCtrl.getUser) 
+app.post(`/api/user`, userCtrl.getUser);
+
+app.post(`/auth/register`, userCtrl.register);
+
+app.post(`/auth/login`, userCtrl.login);
+
+app.post(`/auth/logout`, userCtrl.logout);
+
+app.get('/api/user', userCtrl.getUser);

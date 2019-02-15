@@ -1,5 +1,5 @@
 const initialState = {
-    id: 0,
+    user_id: 0,
     username: '',
     profile_pic: ''
 }
@@ -20,11 +20,11 @@ export default function reducer(
     switch(type){
         case UPDATE_USER:
             const {
-                id, username, profile_pic
+                user_id, username, profile_pic
             } = payload;
             return {
                 ...state, 
-                id, username, profile_pic
+                user_id, username, profile_pic
             };
         default:
             return state;

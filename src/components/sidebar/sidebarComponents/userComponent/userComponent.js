@@ -13,35 +13,76 @@ class UserComponent extends React.Component {
         }
     }
     componentDidMount(){
-        const {id} = this.props;
-        if(id){
+        const {user_id} = this.props;
+        if(user_id){
             this.setState({
                 loggedIn: true,
             })
         }
-        // else{
-        //     axios.get('/api/user')
-        //     .then(res=>{
-
-        //     })
-        // }
+        else{
+            axios.get('/api/user')
+            .then(res=>{
+                this.props.updateUser(res.data);
+                this.setState({
+                    loggedIn: true,
+                })
+            }).catch(err=>{
+                // don't move
+            });
+        }
     }
     handleChange(prop, val){
         this.setState({
             [prop]: val
         });
     };
+    register = ()=>{                                    // this is an arrow function so it doesn't need to be bound
+        const {username, password} = this.state;
+        axios.post(
+            `/auth/register`, {username, password}
+        ).then(res=>{
+            this.props.updateUser(res.data);
+            this.setState({loggedIn: true});
+        }).catch(err=>{
+            console.log(err);
+        });
+    };
+    login = ()=>{
+        const {username, password} = this.state;   
+        // console.log({username})
+        axios.post(`/auth/login`, {username, password})
+        .then(res=>{
+            this.props.updateUser(res.data);
+            this.setState({loggedIn: true})
+        }).catch(err=>{
+            console.log(err);
+        });
+    };
+    logout = ()=>{
+        axios.post('/auth/logout')
+        .then(res=>{
+            this.props.updateUser({});
+            this.setState({loggedIn: false})
+        }).catch(err=>{
+            console.log(err);
+        });
+    };
     render(){
-        console.log(this.state.username)
-        console.log(this.state.password)
+        // console.log(this.state.username)
+        // console.log(this.state.password)
         const {username, password} = this.state; 
         return (
             <div>
                 {
                     this.state.loggedIn ? (
-                        <p>
-                            {this.props.username}
-                        </p>
+                        <div>                            
+                            <p>
+                                {this.props.username}
+                            </p>
+                            <button onClick={this.logout}>
+                                Logout
+                            </button> 
+                        </div>
                     ):(
                         <div>
                             <input 
@@ -62,6 +103,12 @@ class UserComponent extends React.Component {
                                     );
                                 }}
                             />
+                            <button onClick={this.login}>
+                                Login
+                            </button>
+                            <button onClick={this.register}>
+                                Register
+                            </button> 
                         </div>
                     )
                 }
@@ -71,7 +118,7 @@ class UserComponent extends React.Component {
 }
 const mapToProps = reduxState => {                      // State aka data
     return {
-        id: reduxState.id,
+        user_id: reduxState.user_id,
         username: reduxState.username,
         profile_pic: reduxState.profile_pic
     }
