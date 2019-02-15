@@ -35,4 +35,6 @@ app.get(`/test`, testCtrl.testa);
 
 app.post(`/getcategories`, viewCtrl.getCategoryItems);
 
-app.get(`/playinfo/:id`, playCtrl.getPlayInfo)
+app.get(`/playinfo/:id`, playCtrl.getPlayInfo);
+
+app.get(`/api/abcdoption/:aid/:zid`, playCtrl.getOption);
