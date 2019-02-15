@@ -5,6 +5,7 @@ const massive = require('massive');
 const testCtrl = require(`./controllers/testcontroller`);
 const viewCtrl = require(`./controllers/view`);
 const playCtrl = require(`./controllers/play`);
+const userCtrl = require(`./controllers/user`);
 
 const {
     SERVER_PORT, DB_CONNECTION, SESSIONT_SECRET
@@ -38,3 +39,5 @@ app.post(`/getcategories`, viewCtrl.getCategoryItems);
 app.get(`/playinfo/:id`, playCtrl.getPlayInfo);
 
 app.get(`/api/abcdoption/:aid/:zid`, playCtrl.getOption);
+
+app.post(`/api/user`, userCtrl.getUser) 
