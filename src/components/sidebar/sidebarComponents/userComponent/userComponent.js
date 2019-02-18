@@ -36,7 +36,7 @@ class UserComponent extends React.Component {
             [prop]: val
         });
     };
-    register = ()=>{                                    // this is an arrow function so it doesn't need to be bound
+    register = ()=>{
         const {username, password} = this.state;
         axios.post(
             `/auth/register`, {username, password}
@@ -53,7 +53,7 @@ class UserComponent extends React.Component {
         axios.post(`/auth/login`, {username, password})
         .then(res=>{
             this.props.updateUser(res.data);
-            this.setState({loggedIn: true})
+            this.setState({loggedIn: 'true'})
         }).catch(err=>{
             console.log(err);
         });
@@ -66,6 +66,7 @@ class UserComponent extends React.Component {
         }).catch(err=>{
             console.log(err);
         });
+        this.props.history.push('/'); 
     };
     render(){
         // console.log(this.state.username)
@@ -116,14 +117,15 @@ class UserComponent extends React.Component {
         )
     }
 }
-const mapToProps = reduxState => {                      // State aka data
+const mapToProps = reduxState => {
     return {
         user_id: reduxState.user_id,
         username: reduxState.username,
-        profile_pic: reduxState.profile_pic
+        profile_pic: reduxState.profile_pic,
+        loggedIn: reduxState.loggedIn 
     }
 };
-const dispatch = {                                      // Methods aka actions
+const dispatch = {
     updateUser
 };
 export default connect(mapToProps, dispatch)(UserComponent);

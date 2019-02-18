@@ -1,7 +1,8 @@
 const initialState = {
     user_id: 0,
     username: '',
-    profile_pic: ''
+    profile_pic: '',
+    loggedIn: false
 }
 
 const UPDATE_USER = 'UPDATE_USER';
@@ -22,9 +23,10 @@ export default function reducer(
             const {
                 user_id, username, profile_pic
             } = payload;
+            const loggedIn = true
             return {
                 ...state, 
-                user_id, username, profile_pic
+                user_id, username, profile_pic, loggedIn
             };
         default:
             return state;

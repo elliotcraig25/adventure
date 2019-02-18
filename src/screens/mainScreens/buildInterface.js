@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './mainScreen.css';
 import Header from '../../components/header/header';
 import Sidebar from '../../components/sidebar/sidebar';
@@ -11,7 +12,19 @@ class BuildInterface extends React.Component {
 
         };
     };
+    componentDidMount(){
+        if(!this.props.user_id){
+            this.props.history.push('/');
+        }
+    }
+    check = ()=>{
+        if(!this.props.user_id){
+            this.props.history.push('/');
+        }
+        console.log('checked')
+    }
     render(){
+        this.check()
         return (
             <div className='head-side-main'>
                 <div className='head'>
@@ -29,5 +42,9 @@ class BuildInterface extends React.Component {
         )
     };
 };
-
-export default BuildInterface;
+const mapToProps = reduxState => {
+    return {
+        user_id: reduxState.user_id
+    }
+};
+export default connect(mapToProps, null)(BuildInterface);

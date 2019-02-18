@@ -1,12 +1,13 @@
 import React from 'react';
 import './navGraphic.css';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 class NavGraphic extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            logedin: true
+
         };
     };
     render(){
@@ -16,7 +17,7 @@ class NavGraphic extends React.Component {
                     little box
                 </div>
                 <div className='links'>
-                    <Link to={this.state.logedin ? '/build' : '/'}>     {/* /play needs to be changed once i've build a login screen */}
+                    <Link to={this.props.user_id ? '/build' : '/'}>     {/* /play needs to be changed once i've build a login screen */}
                         <div className='make'>
                             Make your own adventure
                         </div>
@@ -31,5 +32,9 @@ class NavGraphic extends React.Component {
         )
     };
 };
-
-export default NavGraphic;
+const mapToProps = reduxState => {
+    return {
+        user_id: reduxState.user_id
+    }
+};
+export default connect(mapToProps, null)(NavGraphic);

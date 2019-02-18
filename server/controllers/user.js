@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 module.exports = {
     register: async (req, res)=>{
         const {username, password} = req.body;
-        console.log('does it hit?', {username}, {password});
+        // console.log('does it hit?', {username}, {password});
         const {session} = req;
         const db = req.app.get('db');
         const salt = bcrypt.genSaltSync(10);
@@ -36,7 +36,7 @@ module.exports = {
         const foundUser = bcrypt.compareSync(
             password, user.password
         );
-        console.log({foundUser});
+        // console.log({foundUser});
         if(foundUser){
             delete user.password;
             session.user = user;
@@ -51,7 +51,7 @@ module.exports = {
     },
     getUser: (req, res)=>{
         const {user} = req.session;
-        console.log({user});
+        // console.log({user});
         if(user){
             res.status(200).send(user);
         }else{
