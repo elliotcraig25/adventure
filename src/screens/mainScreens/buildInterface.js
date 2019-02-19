@@ -34,7 +34,7 @@ class BuildInterface extends React.Component {
                     <div className='side'>
                         <Sidebar />
                     </div>
-                    <div className='main'>
+                    <div className='main_build'>
                         <BuildComponent />
                     </div>
                 </div>
