@@ -9,7 +9,9 @@ class UserComponent extends React.Component {
         this.state = {
             username: '',
             password: '',
-            loggedIn: false
+            loggedIn: false,
+            loggingIn: false,
+            registering: false
         }
     }
     componentDidMount(){
@@ -62,57 +64,132 @@ class UserComponent extends React.Component {
         axios.post('/auth/logout')
         .then(res=>{
             this.props.updateUser({});
-            this.setState({loggedIn: false})
+            this.setState({loggedIn: false, })
         }).catch(err=>{
             console.log(err);
         });
         this.props.history.push('/'); 
     };
+    handleClickLogin = ()=>{
+        this.setState({loggingIn: true, loggedIn: false, registering: false})
+    }
+    handleClickRegister = ()=>{
+        this.setState({loggingIn: false, loggedIn: false, registering: true})
+    }
+    handleClickCancel = ()=>{
+        this.setState({loggingIn: false, loggedIn: false, registering: false})
+    }
+    notLoggedIn = ()=>{
+        return (
+            <div className='user_component_child'>
+                <div className='profile_pic_boarder_top'></div>
+                <div className='profile_pic_boarder_bottom'></div>
+                <div className='user_boarder_bottom'></div>
+                <div className='profile_pic'>
+                    profile pic
+                </div>
+                <div className='name_place'>Guest</div>
+                <div className='loggin_register_one'>
+                    
+                    <button onClick={this.handleClickLogin}>
+                        Login
+                    </button>
+                    <button onClick={this.handleClickRegister}>
+                        Register
+                    </button> 
+                </div>
+            </div>
+        )
+    };
+    loggingIn = ()=>{
+        const {username, password} = this.state;
+        return (
+            <div>
+                <div>Login</div>
+                <input 
+                    type='text'
+                    value={username}
+                onChange={(e)=>{
+                    this.handleChange(
+                        'username', e.target.value
+                    );
+                }}
+                />
+                <input 
+                    type='password'
+                    value={password}
+                    onChange={(e)=>{
+                        this.handleChange(
+                            'password', e.target.value
+                        );
+                    }}
+                />
+                <button onClick={this.handleClickRegister}>Register</button>
+                <button onClick={this.handleClickCancel}>Cancel</button>
+            </div>
+        )
+    }
+    registering = ()=>{
+        const {username, password} = this.state;
+        return (            
+            <div>
+                <div>register</div>
+                <input 
+                    type='text'
+                    value={username}
+                onChange={(e)=>{
+                    this.handleChange(
+                        'username', e.target.value
+                    );
+                }}
+                />
+                <input 
+                    type='password'
+                    value={password}
+                    onChange={(e)=>{
+                        this.handleChange(
+                            'password', e.target.value
+                        );
+                    }}
+                />
+                <button onClick={this.handleClickLogin}>Login</button>
+                <button onClick={this.handleClickCancel}>Cancel</button>
+            </div>
+        )
+    }
+    loggedIn = ()=>{
+        return (            
+            <div className='user_component_child'>
+                <div className='profile_pic_boarder'></div>
+                <div>
+                    profile pic
+                </div>                       
+                <div>
+                    {this.props.username}
+                </div>
+                <button onClick={this.logout}>
+                    Logout
+                </button> 
+            </div>
+        )
+    }
+    whatToRender(){
+        if(this.state.loggedIn){
+            return this.loggedIn()
+        }else if(!this.state.loggedIn && !this.state.loggingIn && !this.state.registering){
+            return this.notLoggedIn()
+        }else if(!this.state.loggedIn && this.state.loggingIn && !this.state.registering){
+            return this.loggingIn()
+        }else if(!this.state.loggedIn && !this.state.loggingIn && this.state.registering){
+            return this.registering()
+        }
+    }
     render(){
         // console.log(this.state.username)
         // console.log(this.state.password)
-        const {username, password} = this.state; 
         return (
-            <div>
-                {
-                    this.state.loggedIn ? (
-                        <div>                            
-                            <p>
-                                {this.props.username}
-                            </p>
-                            <button onClick={this.logout}>
-                                Logout
-                            </button> 
-                        </div>
-                    ):(
-                        <div>
-                            <input 
-                                type='text'
-                                value={username}                    // putting value here lets state influence username instead of just username being able to influence username
-                            onChange={(e)=>{
-                                this.handleChange(
-                                    'username', e.target.value
-                                );
-                            }}
-                            />
-                            <input 
-                                type='password'
-                                value={password}
-                                onChange={(e)=>{
-                                    this.handleChange(
-                                        'password', e.target.value
-                                    );
-                                }}
-                            />
-                            <button onClick={this.login}>
-                                Login
-                            </button>
-                            <button onClick={this.register}>
-                                Register
-                            </button> 
-                        </div>
-                    )
-                }
+            <div  className='user_component'>
+                {this.whatToRender()}
             </div>
         )
     }

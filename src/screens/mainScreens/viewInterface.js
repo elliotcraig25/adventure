@@ -17,14 +17,12 @@ class ViewInterface extends React.Component {
                 <div className='head'>
                     <Header />
                 </div>
-                <div className='side-main'>
-                    <div className='side'>
-                        <Sidebar />
-                    </div>
-                    <div className='main_view'>
-                        <ViewComponent />
-                    </div>
+                <div className='side'>
+                    <Sidebar />
                 </div>
+                <div className='main_view'>
+                    <ViewComponent />
+                </div>                
             </div>
         )
     };

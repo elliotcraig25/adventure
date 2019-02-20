@@ -17,14 +17,14 @@ class NavGraphic extends React.Component {
                     little box
                 </div>
                 <div className='links'>
-                    <Link to={this.props.user_id ? '/build' : '/'}>     {/* /play needs to be changed once i've build a login screen */}
-                        <div className='make'>
-                            Make your own adventure
-                        </div>
-                    </Link>
                     <Link to='/'>
                         <div className='choose'>
                             Choose your own adventure
+                        </div>
+                    </Link>
+                    <Link to={this.props.user_id ? '/build' : '/'}>     {/* /play needs to be changed once i've build a login screen */}
+                        <div className='make'>
+                            Make your own adventure
                         </div>
                     </Link>
                 </div>

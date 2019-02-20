@@ -9,7 +9,7 @@ class SidebarLinks extends React.Component {
     }
     render(){
         return (
-            <div>
+            <div className='sidebar_links'>
                 Links
             </div>
         )

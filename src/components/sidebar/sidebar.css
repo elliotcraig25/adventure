@@ -1,3 +1,87 @@
 .sidebar {
-    border: solid black 1px;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 18px 216px 18px 180px 1fr 54px 18px 18px;
+}
+
+.user_component {
+    /* border: solid black 1px; */
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.user_component_child {
+    /* border: solid black 1px; */
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 18px 126px 18px;
+    grid-template-rows: 1fr 7fr 2fr 2fr;
+}
+
+.profile_pic {
+    border: 1px solid black;
+    border-radius: 50%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.name_place {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile_pic_boarder_top {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    border-top: solid black 1px;
+}
+
+.profile_pic_boarder_bottom {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    border-bottom: solid black 1px;
+}
+
+.user_boarder_bottom {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 4;
+    border-bottom: solid black 1px;
+}
+
+.loggin_register_one {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.sidebar_links {
+    /* border: solid black 1px; */
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 5;
 }
