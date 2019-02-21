@@ -34,16 +34,10 @@ class PlayComponents extends React.Component {
         // console.log(this.state.adventureID)
         // this.getPlayInfo()
         return (
-            <div>
-                <div>
-                    <TitleAndName title={this.state.title} user={this.state.user}/>
-                    <div>
-                        <div>                            
-                            <Scenario id={this.state.adventureID}/> 
-                        </div>
-                        {/* character sheet component */}
-                    </div> 
-                </div>
+            <div className='main_play_two'>
+                <TitleAndName title={this.state.title} user={this.state.user}/>                 
+                <Scenario id={this.state.adventureID}/> 
+                {/* character sheet component */}
             </div>
         )
     };

@@ -50,10 +50,23 @@
     grid-row-end: 25;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
+
+.main_play_two {
+    /* background-color: green; */
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 18px 29fr 30fr 18px 16fr 18px;
+    grid-template-rows: 18px 4fr 18px 30fr 18px;
+}
+
+.title_and_name {
+    background-color: yellow;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 .main_build {

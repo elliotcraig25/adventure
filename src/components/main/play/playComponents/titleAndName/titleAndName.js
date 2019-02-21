@@ -4,7 +4,7 @@ const TitleAndName = (props)=>{
     // const {title} = props
     // console.log(title)
     return (
-        <div>
+        <div className='title_and_name'>
             <div>
                 {props.title} 
             </div>
