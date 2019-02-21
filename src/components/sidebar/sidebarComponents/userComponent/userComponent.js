@@ -33,6 +33,11 @@ class UserComponent extends React.Component {
             });
         }
     }
+    // componentDidUpdate(prevProps, prevState){
+    //     if(prevProps.user_id !== this.props.user_id){
+    //         this.setState({loggedIn: true})
+    //     }
+    // };
     handleChange(prop, val){
         this.setState({
             [prop]: val
@@ -54,11 +59,12 @@ class UserComponent extends React.Component {
         // console.log({username})
         axios.post(`/auth/login`, {username, password})
         .then(res=>{
-            this.props.updateUser(res.data);
-            this.setState({loggedIn: 'true'})
+            // console.log(res.data)
+            this.props.updateUser(res.data.user);  
+            this.setState({loggedIn: true})        
         }).catch(err=>{
             console.log(err);
-        });
+        }); 
     };
     logout = ()=>{
         axios.post('/auth/logout')
