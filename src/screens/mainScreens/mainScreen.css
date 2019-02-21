@@ -53,11 +53,14 @@
 }
 
 .main_build {
-    background-color: darkgray;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* background-color: darkgray; */
+    /* width: 100%;
+    height: 100%; */
+    grid-column-start: 6;
+    grid-column-end: 25;
+    grid-row-start: 6;
+    grid-row-end: 25;
+    display: grid;
+    grid-template-columns: 18px 63fr 18px 14fr 18px;
+    grid-template-rows: 8fr 18px 28fr;
 }

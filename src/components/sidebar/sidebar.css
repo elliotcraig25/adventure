@@ -85,3 +85,136 @@
     grid-row-start: 4;
     grid-row-end: 5;
 }
+
+.user_component_child_registering {
+    /* border: solid black 1px; */
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 18px 18px 18px 18px 18px 18px 18px 18px 18px;
+    grid-template-rows: 18px 54px 18px 18px 9px 18px 9px 18px 18px 18px 18px;
+}
+
+.profile_pic_two {
+    border: 1px solid black;
+    border-radius: 50%;
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registering_input_one {
+    grid-column-start: 2;
+    grid-column-end: 9;
+    grid-row-start: 4;
+    grid-row-end: 5;
+}
+
+.registering_input_two {
+    grid-column-start: 2;
+    grid-column-end: 9;
+    grid-row-start: 6;
+    grid-row-end: 7;
+}
+
+.registering_input_three {
+    grid-column-start: 2;
+    grid-column-end: 9;
+    grid-row-start: 8;
+    grid-row-end: 9;
+}
+
+.register_button_on_registering {
+    grid-column-start: 3;
+    grid-column-end: 8;
+    grid-row-start: 10;
+    grid-row-end: 11;
+}
+
+.login_button_on_registering {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 11;
+    grid-row-end: 12;
+}
+
+.cancel_button_on_registering {
+    grid-column-start: 6;
+    grid-column-end: 9;
+    grid-row-start: 11;
+    grid-row-end: 12;
+}
+
+.registering_border_top {
+    grid-column-start: 2;
+    grid-column-end: 9;
+    border-top: solid black 1px;
+}
+
+.registering_border_bottom {
+    grid-column-start: 2;
+    grid-column-end: 9;
+    grid-row-start: 11;
+    grid-row-end: 12;
+    border-bottom: solid black 1px;
+}
+
+.user_component_child_logging_in {
+    /* border: solid black 1px; */
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 18px 18px 36px 18px 36px 18px 18px;
+    grid-template-rows: 18px 90px 9px 18px 9px 18px 18px 18px 18px;
+}
+
+.profile_pic_three {
+    border: 1px solid black;
+    border-radius: 50%;
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loggin_in_input_one {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 4;
+    grid-row-end: 5;
+}
+
+.loggin_in_input_two {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 6;
+    grid-row-end: 7;
+}
+
+.login_button_on_logging_in {
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 8;
+    grid-row-end: 9;
+}
+
+.register_button_on_logging_in {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 9;
+    grid-row-end: 10;
+}
+
+.cancel_button_on_logging_in {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 9;
+    grid-row-end: 10;
+}

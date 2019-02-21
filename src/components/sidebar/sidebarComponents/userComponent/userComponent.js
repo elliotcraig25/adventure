@@ -64,11 +64,11 @@ class UserComponent extends React.Component {
         axios.post('/auth/logout')
         .then(res=>{
             this.props.updateUser({});
-            this.setState({loggedIn: false, })
+            this.setState({loggingIn: false, loggedIn: false, registering: false})
         }).catch(err=>{
             console.log(err);
         });
-        this.props.history.push('/'); 
+        // this.props.history.push('/'); 
     };
     handleClickLogin = ()=>{
         this.setState({loggingIn: true, loggedIn: false, registering: false})
@@ -104,9 +104,12 @@ class UserComponent extends React.Component {
     loggingIn = ()=>{
         const {username, password} = this.state;
         return (
-            <div>
-                <div>Login</div>
+            <div className='user_component_child_logging_in'>
+                <div className='registering_border_top'></div>
+                <div className='registering_border_bottom'></div>
+                <div className='profile_pic_three'></div>
                 <input 
+                    className='loggin_in_input_one'
                     type='text'
                     value={username}
                 onChange={(e)=>{
@@ -116,6 +119,7 @@ class UserComponent extends React.Component {
                 }}
                 />
                 <input 
+                    className='loggin_in_input_two'
                     type='password'
                     value={password}
                     onChange={(e)=>{
@@ -124,17 +128,23 @@ class UserComponent extends React.Component {
                         );
                     }}
                 />
-                <button onClick={this.handleClickRegister}>Register</button>
-                <button onClick={this.handleClickCancel}>Cancel</button>
+                <button className='login_button_on_logging_in' onClick={this.login}>Login</button>
+                <button className='register_button_on_logging_in' onClick={this.handleClickRegister}>Register</button>
+                <button className='cancel_button_on_logging_in' onClick={this.handleClickCancel}>Cancel</button>
             </div>
         )
     }
     registering = ()=>{
         const {username, password} = this.state;
         return (            
-            <div>
-                <div>register</div>
+            <div className='user_component_child_registering'>
+                <div className='registering_border_top'></div>
+                <div className='registering_border_bottom'></div>
+                <div className='profile_pic_two'>
+                    Drag
+                </div>
                 <input 
+                    className='registering_input_one'
                     type='text'
                     value={username}
                 onChange={(e)=>{
@@ -144,6 +154,7 @@ class UserComponent extends React.Component {
                 }}
                 />
                 <input 
+                    className='registering_input_two'
                     type='password'
                     value={password}
                     onChange={(e)=>{
@@ -152,24 +163,45 @@ class UserComponent extends React.Component {
                         );
                     }}
                 />
-                <button onClick={this.handleClickLogin}>Login</button>
-                <button onClick={this.handleClickCancel}>Cancel</button>
+                <input 
+                    className='registering_input_three'
+                    type='password'
+                    value={password}
+                />
+                <button className='register_button_on_registering' onClick={this.register}>Register</button>
+                <button className='login_button_on_registering' onClick={this.handleClickLogin}>Login</button>
+                <button className='cancel_button_on_registering' onClick={this.handleClickCancel}>Cancel</button>
             </div>
+            
         )
     }
     loggedIn = ()=>{
         return (            
+            // <div className='user_component_child'>
+            //     <div className='profile_pic_boarder'></div>
+            //     <div>
+            //         profile pic
+            //     </div>                       
+            //     <div>
+            //         {this.props.username}
+            //     </div>
+            //     <button onClick={this.logout}>
+            //         Logout
+            //     </button> 
+            // </div>
             <div className='user_component_child'>
-                <div className='profile_pic_boarder'></div>
-                <div>
+                <div className='profile_pic_boarder_top'></div>
+                <div className='profile_pic_boarder_bottom'></div>
+                <div className='user_boarder_bottom'></div>
+                <div className='profile_pic'>
                     profile pic
-                </div>                       
-                <div>
-                    {this.props.username}
                 </div>
-                <button onClick={this.logout}>
-                    Logout
-                </button> 
+                <div className='name_place'>{this.props.username}</div>
+                <div className='loggin_register_one'>
+                    <button onClick={this.logout}>
+                        Logout
+                    </button>
+                </div>
             </div>
         )
     }

@@ -5,20 +5,7 @@ class BuildComponents extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedZID: 'za',
-            z_a: 'go through the left door',
-            z_b: 'go through the middle left door',
-            z_c: 'go through the middle right door',
-            z_d: 'go through the right door',
-            za_z: 'you have entered a door with four more doors',
-            za_a: 'this is door one',
-            za_b: 'this is door two',
-            za_c: 'this is door three',
-            za_d: 'this is door four',
-            zb_a: 'this is a different door one',
-            zb_b: 'this is a different door two',
-            zb_c: 'this is a different door three',
-            zb_d: 'this is a different door four',
+            selectedZID: 'za'
         };
     }; 
     setSelectedA = ()=>{
@@ -316,41 +303,41 @@ class BuildComponents extends React.Component {
     }
     render(){
         // console.log(this.state.selectedZIDBackOne)
-        return (
-                <div className='container'> 
-                    {this.aColumn()}
-                    {this.bColumn()}
-                    <div className='container_c'>                
-                        <div className='item_ca'>
-                            {this.state[`${this.state.selectedZID}_a`]}<br/>
-                            <input 
-                                onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_a`, e.target.value)}}
-                            /><br/>
-                            <button onClick={this.setSelectedAFromNext}>a</button>
-                        </div>
-                        <div className='item_cb'>
-                            {this.state[`${this.state.selectedZID}_b`]}<br/>
-                            <input 
-                                onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_b`, e.target.value)}}
-                            /><br/>
-                            <button onClick={this.setSelectedBFromNext}>b</button>
-                        </div>
-                        <div className='item_cc'>
-                            {this.state[`${this.state.selectedZID}_c`]}<br/>
-                            <input 
-                                onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_c`, e.target.value)}}
-                            /><br/>
-                            <button onClick={this.setSelectedCFromNext}>c</button>
-                        </div>
-                        <div className='item_cd'>
-                            {this.state[`${this.state.selectedZID}_d`]}<br/>
-                            <input 
-                                onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_d`, e.target.value)}}
-                            /><br/>
-                            <button onClick={this.setSelectedDFromNext}>d</button>
-                        </div>
+        return ( 
+            <div className='container'> 
+                {this.aColumn()}
+                {this.bColumn()}
+                <div className='container_c'>                
+                    <div className='item_ca'>
+                        {this.state[`${this.state.selectedZID}_a`]}<br/>
+                        <input 
+                            onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_a`, e.target.value)}}
+                        /><br/>
+                        <button onClick={this.setSelectedAFromNext}>a</button>
+                    </div>
+                    <div className='item_cb'>
+                        {this.state[`${this.state.selectedZID}_b`]}<br/>
+                        <input 
+                            onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_b`, e.target.value)}}
+                        /><br/>
+                        <button onClick={this.setSelectedBFromNext}>b</button>
+                    </div>
+                    <div className='item_cc'>
+                        {this.state[`${this.state.selectedZID}_c`]}<br/>
+                        <input 
+                            onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_c`, e.target.value)}}
+                        /><br/>
+                        <button onClick={this.setSelectedCFromNext}>c</button>
+                    </div>
+                    <div className='item_cd'>
+                        {this.state[`${this.state.selectedZID}_d`]}<br/>
+                        <input 
+                            onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_d`, e.target.value)}}
+                        /><br/>
+                        <button onClick={this.setSelectedDFromNext}>d</button>
                     </div>
                 </div>
+            </div>
         )
     };
 };
