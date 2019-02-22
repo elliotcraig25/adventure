@@ -50,4 +50,6 @@ app.post(`/auth/logout`, userCtrl.logout);
 
 app.get('/api/user', userCtrl.getUser);
 
-app.post(`/api/buildinfotodatabase`, buildCtrl.infoToDatabase)
+app.post(`/api/buildinfotodatabase`, buildCtrl.infoToDatabase);
+
+app.post(`/api/createadventure`, buildCtrl.createAdventure);

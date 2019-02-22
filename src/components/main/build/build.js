@@ -1,14 +1,26 @@
 import React from 'react';
 import './build.css';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 class BuildComponents extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedZID: 'za'
+            selectedZID: 'za',
+            adventureTitle: '',
+            adventure_id: 0,
         };
-    }; 
+    };
+    componentDidMount(){
+        // console.log(this.props.user_id)
+        let userMakingTheAdventure = this.props.user_id
+        axios.post(`/api/createadventure`, {userMakingTheAdventure})
+        .then((res)=>{
+            console.log(res.data.adventure_id)
+            this.setState({adventure_id: res.data.adventure_id})
+        })
+    }
     setSelectedA = ()=>{
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'a'
         this.setState({selectedZID: newSelectedZID})
@@ -67,7 +79,8 @@ class BuildComponents extends React.Component {
         })
     }
     sendToDatabase = (prop, val)=>{
-        axios.post(`/api/buildinfotodatabase`, {prop, val})
+        const aID = this.state.adventure_id
+        axios.post(`/api/buildinfotodatabase`, {prop, val, aID})
     }
     aColumn = ()=>{
         let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
@@ -169,11 +182,17 @@ class BuildComponents extends React.Component {
             )
         }else if(previousAbcd === 'z'){
             return (
-                <div className='item_z'>                
+                <div className='item_z'>
+                    <div>Adventure Title</div><br/>
+                    {this.state.adventureTitle}<br/> 
+                    <input 
+                        onChange={(e)=>{this.handleChange(`adventureTitle`, e.target.value)}}
+                    /><br/>
                     {this.state[`${backOne}`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${backOne}`, e.target.value)}}
-                        /><br/>
+                    <input 
+                        onChange={(e)=>{this.handleChange(`${backOne}`, e.target.value)}}
+                    /><br/>
+                    <button onClick={()=>{this.sendToDatabase(`${backOne}`, this.state[`${backOne}`])}}>Add</button><br/>
                 </div>
             )
         }
@@ -299,7 +318,7 @@ class BuildComponents extends React.Component {
         }
     }
     render(){
-        // console.log(this.state.selectedZIDBackOne)
+        console.log(this.state.adventure_id)
         return ( 
             <div className='container'> 
                 {this.aColumn()}
@@ -342,5 +361,9 @@ class BuildComponents extends React.Component {
         )
     };
 };
-
-export default BuildComponents;
+const mapToProps = reduxState => {
+    return {
+        user_id: reduxState.user_id
+    }
+};
+export default connect(mapToProps, null)(BuildComponents);
