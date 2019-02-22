@@ -1,5 +1,6 @@
 import React from 'react';
 import './build.css';
+import axios from 'axios';
 
 class BuildComponents extends React.Component {
     constructor(props){
@@ -86,6 +87,14 @@ class BuildComponents extends React.Component {
         // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
+    handleChange = (prop, val)=>{
+        this.setState({
+            [prop]: val
+        })
+    }
+    sendToDatabase = (prop, val)=>{
+        axios.post(`/api/buildinfotodatabase`, {prop, val})
+    }
     aColumn = ()=>{
         let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
         let backTwo = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 2).join('')
@@ -96,21 +105,22 @@ class BuildComponents extends React.Component {
             return (
                 <div className='container_a'>                
                     <div className='a_item_aa'>
-                        {this.state[`${backTwo}_a`]}<br/>                        
+                        {this.state[`${backTwo}_a`]}<br/>
+                        <div></div><br/>
                         {this.state[`${selectedBackOne}_z`]}<br/>
-                        <button onClick={this.setSelectedBackOne}>a</button>                     
+                        <button onClick={this.setSelectedBackOne}>Select</button>                     
                     </div>
                     <div className='a_item_ab'>
                         {this.state[`${backTwo}_b`]}<br/>                    
-                        <button onClick={this.setSelectedBFromPrev}>b</button> 
+                        <button onClick={this.setSelectedBFromPrev}>Select</button> 
                     </div>
                     <div className='a_item_ac'>
                         {this.state[`${backTwo}_c`]}<br/>
-                        <button onClick={this.setSelectedCFromPrev}>c</button>
+                        <button onClick={this.setSelectedCFromPrev}>Select</button>
                     </div>
                     <div className='a_item_ad'>
                         {this.state[`${backTwo}_d`]}<br/>
-                        <button onClick={this.setSelectedDFromPrev}>d</button>
+                        <button onClick={this.setSelectedDFromPrev}>Select</button>
                     </div>
                 </div>
             )
@@ -119,20 +129,21 @@ class BuildComponents extends React.Component {
                 <div className='container_a'>
                     <div className='b_item_aa'>
                         {this.state[`${backTwo}_a`]}<br/>
-                        <button onClick={this.setSelectedAFromPrev}>a</button> 
+                        <button onClick={this.setSelectedAFromPrev}>Select</button> 
                     </div>
                     <div className='b_item_ab'>
                         {this.state[`${backTwo}_b`]}<br/>
+                        <div></div><br/>
                         {this.state[`${selectedBackOne}_z`]}<br/>
-                        <button onClick={this.setSelectedBackOne}>b</button>
+                        <button onClick={this.setSelectedBackOne}>Select</button>
                     </div>
                     <div className='b_item_ac'>
                         {this.state[`${backTwo}_c`]}<br/>
-                        <button onClick={this.setSelectedCFromPrev}>c</button> 
+                        <button onClick={this.setSelectedCFromPrev}>Select</button> 
                     </div>
                     <div className='b_item_ad'>
                         {this.state[`${backTwo}_d`]}<br/>
-                        <button onClick={this.setSelectedDFromPrev}>d</button>
+                        <button onClick={this.setSelectedDFromPrev}>Select</button>
                     </div>
                 </div>
             )
@@ -141,20 +152,21 @@ class BuildComponents extends React.Component {
                 <div className='container_a'>                
                     <div className='c_item_aa'>
                         {this.state[`${backTwo}_a`]}<br/>
-                        <button onClick={this.setSelectedAFromPrev}>a</button> 
+                        <button onClick={this.setSelectedAFromPrev}>Select</button> 
                     </div>
                     <div className='c_item_ab'>
                         {this.state[`${backTwo}_b`]}<br/>
-                        <button onClick={this.setSelectedBFromPrev}>b</button>
+                        <button onClick={this.setSelectedBFromPrev}>Select</button>
                     </div>
                     <div className='c_item_ac'>
                         {this.state[`${backTwo}_c`]}<br/>
+                        <div></div><br/>
                         {this.state[`${selectedBackOne}_z`]}<br/>
-                        <button onClick={this.setSelectedBackOne}>d</button>
+                        <button onClick={this.setSelectedBackOne}>Select</button>
                     </div>
                     <div className='c_item_ad'>
                         {this.state[`${backTwo}_d`]}<br/>
-                        <button onClick={this.setSelectedDFromPrev}>d</button>
+                        <button onClick={this.setSelectedDFromPrev}>Select</button>
                     </div>
                 </div>
             )
@@ -163,20 +175,21 @@ class BuildComponents extends React.Component {
                 <div className='container_a'>                
                     <div className='d_item_aa'>
                         {this.state[`${backTwo}_a`]}<br/>
-                        <button onClick={this.setSelectedAFromPrev}>a</button> 
+                        <button onClick={this.setSelectedAFromPrev}>Select</button> 
                     </div>
                     <div className='d_item_ab'>
                         {this.state[`${backTwo}_b`]}<br/>
-                        <button onClick={this.setSelectedBFromPrev}>b</button>
+                        <button onClick={this.setSelectedBFromPrev}>Select</button>
                     </div>
                     <div className='d_item_ac'>
                         {this.state[`${backTwo}_c`]}<br/>
-                        <button onClick={this.setSelectedCFromPrev}>c</button> 
+                        <button onClick={this.setSelectedCFromPrev}>Select</button> 
                     </div>
                     <div className='d_item_ad'>
                         {this.state[`${backTwo}_d`]}<br/>
+                        <div></div><br/>
                         {this.state[`${selectedBackOne}_z`]}<br/>
-                        <button onClick={this.setSelectedBackOne}>d</button>
+                        <button onClick={this.setSelectedBackOne}>Select</button>
                     </div>
                 </div>
             )
@@ -191,11 +204,6 @@ class BuildComponents extends React.Component {
             )
         }
     }
-    handleChange = (prop, val)=>{
-        this.setState({
-            [prop]: val
-        })
-    }
     bColumn = ()=>{
         let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
         // console.log({backOne})
@@ -209,6 +217,7 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${backOne}_a`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${backOne}_a`, this.state[`${backOne}_a`])}}>Add</button>
                         {this.state[`${this.state.selectedZID}_z`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
@@ -216,15 +225,15 @@ class BuildComponents extends React.Component {
                     </div>
                     <div className='a_item_ab'>
                         {this.state[`${backOne}_b`]}<br/>
-                        <button onClick={this.setSelectedB}>b</button>
+                        <button onClick={this.setSelectedB}>Select</button>
                     </div>
                     <div className='a_item_ac'>
                         {this.state[`${backOne}_c`]}<br/>
-                        <button onClick={this.setSelectedC}>c</button>
+                        <button onClick={this.setSelectedC}>Select</button>
                     </div>
                     <div className='a_item_ad'>
                         {this.state[`${backOne}_d`]}<br/>
-                        <button onClick={this.setSelectedD}>d</button>
+                        <button onClick={this.setSelectedD}>Select</button>
                     </div>
                 </div>
             )
@@ -233,7 +242,7 @@ class BuildComponents extends React.Component {
                 <div className='container_b'>                
                     <div className='b_item_aa'>
                         {this.state[`${backOne}_a`]}<br/>
-                        <button onClick={this.setSelectedA}>a</button>
+                        <button onClick={this.setSelectedA}>Select</button>
                     </div>
                     <div className='b_item_ab'>
                         {this.state[`${backOne}_b`]}<br/>
@@ -247,11 +256,11 @@ class BuildComponents extends React.Component {
                     </div>
                     <div className='b_item_ac'>
                         {this.state[`${backOne}_c`]}<br/>
-                        <button onClick={this.setSelectedC}>c</button>
+                        <button onClick={this.setSelectedC}>Select</button>
                     </div>
                     <div className='b_item_ad'>
                         {this.state[`${backOne}_d`]}<br/>
-                        <button onClick={this.setSelectedD}>d</button>
+                        <button onClick={this.setSelectedD}>Select</button>
                     </div>
                 </div>
             )
@@ -260,11 +269,11 @@ class BuildComponents extends React.Component {
                 <div className='container_b'>                
                     <div className='c_item_aa'>
                         {this.state[`${backOne}_a`]}<br/>
-                        <button onClick={this.setSelectedA}>a</button>
+                        <button onClick={this.setSelectedA}>Select</button>
                     </div>
                     <div className='c_item_ab'>
                         {this.state[`${backOne}_b`]}<br/>
-                        <button onClick={this.setSelectedB}>b</button>
+                        <button onClick={this.setSelectedB}>Select</button>
                     </div>
                     <div className='c_item_ac'>
                         {this.state[`${backOne}_c`]}<br/>
@@ -278,7 +287,7 @@ class BuildComponents extends React.Component {
                     </div>
                     <div className='c_item_ad'>
                         {this.state[`${backOne}_d`]}<br/>
-                        <button onClick={this.setSelectedD}>d</button>
+                        <button onClick={this.setSelectedD}>Select</button>
                     </div>
                 </div>
             )
@@ -287,15 +296,15 @@ class BuildComponents extends React.Component {
                 <div className='container_b'>                
                     <div className='d_item_aa'>
                         {this.state[`${backOne}_a`]}<br/>
-                        <button onClick={this.setSelectedA}>a</button>
+                        <button onClick={this.setSelectedA}>Select</button>
                     </div>
                     <div className='d_item_ab'>
                         {this.state[`${backOne}_b`]}<br/>
-                        <button onClick={this.setSelectedB}>b</button>
+                        <button onClick={this.setSelectedB}>Select</button>
                     </div>
                     <div className='d_item_ac'>
                         {this.state[`${backOne}_c`]}<br/>
-                        <button onClick={this.setSelectedC}>c</button>
+                        <button onClick={this.setSelectedC}>Select</button>
                     </div>
                     <div className='d_item_ad'>
                         {this.state[`${backOne}_d`]}<br/>
@@ -323,28 +332,28 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_a`, e.target.value)}}
                         /><br/>
-                        <button onClick={this.setSelectedAFromNext}>a</button>
+                        <button onClick={this.setSelectedAFromNext}>Select</button>
                     </div>
                     <div className='item_cb'>
                         {this.state[`${this.state.selectedZID}_b`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_b`, e.target.value)}}
                         /><br/>
-                        <button onClick={this.setSelectedBFromNext}>b</button>
+                        <button onClick={this.setSelectedBFromNext}>Select</button>
                     </div>
                     <div className='item_cc'>
                         {this.state[`${this.state.selectedZID}_c`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_c`, e.target.value)}}
                         /><br/>
-                        <button onClick={this.setSelectedCFromNext}>c</button>
+                        <button onClick={this.setSelectedCFromNext}>Select</button>
                     </div>
                     <div className='item_cd'>
                         {this.state[`${this.state.selectedZID}_d`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_d`, e.target.value)}}
                         /><br/>
-                        <button onClick={this.setSelectedDFromNext}>d</button>
+                        <button onClick={this.setSelectedDFromNext}>Select</button>
                     </div>
                 </div>
             </div>

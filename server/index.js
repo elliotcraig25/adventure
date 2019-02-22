@@ -6,6 +6,7 @@ const testCtrl = require(`./controllers/testcontroller`);
 const viewCtrl = require(`./controllers/view`);
 const playCtrl = require(`./controllers/play`);
 const userCtrl = require(`./controllers/user`);
+const buildCtrl = require(`./controllers/build`);
 
 const {
     SERVER_PORT, DB_CONNECTION, SESSIONT_SECRET
@@ -48,3 +49,5 @@ app.post(`/auth/login`, userCtrl.login);
 app.post(`/auth/logout`, userCtrl.logout);
 
 app.get('/api/user', userCtrl.getUser);
+
+app.post(`/api/buildinfotodatabase`, buildCtrl.infoToDatabase)
