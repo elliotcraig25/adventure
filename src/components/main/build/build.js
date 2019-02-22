@@ -10,81 +10,55 @@ class BuildComponents extends React.Component {
         };
     }; 
     setSelectedA = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'a'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedB = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'b'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedC = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'c'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedD = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'd'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedAFromNext = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0) + 'a'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedBFromNext = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0) + 'b'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedCFromNext = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0) + 'c'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedDFromNext = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0) + 'd'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedAFromPrev = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + 'a'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedBFromPrev = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + 'b'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedCFromPrev = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + 'c'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedDFromPrev = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + 'd'
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     setSelectedBackOne = ()=>{
-        // console.log(this.state.selectedZID)
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1)
-        // console.log(newSelectedZID)
         this.setState({selectedZID: newSelectedZID})
     }
     handleChange = (prop, val)=>{
@@ -217,11 +191,12 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${backOne}_a`, e.target.value)}}
                         /><br/>
-                        <button onClick={()=>{this.sendToDatabase(`${backOne}_a`, this.state[`${backOne}_a`])}}>Add</button>
+                        <button onClick={()=>{this.sendToDatabase(`${backOne}_a`, this.state[`${backOne}_a`])}}>Add</button><br/>
                         {this.state[`${this.state.selectedZID}_z`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])}}>Add</button><br/>
                     </div>
                     <div className='a_item_ab'>
                         {this.state[`${backOne}_b`]}<br/>
@@ -249,6 +224,7 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${backOne}_b`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${backOne}_b`, this.state[`${backOne}_b`])}}>Add</button><br/>
                         {this.state[`${this.state.selectedZID}_z`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
@@ -280,6 +256,7 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${backOne}_c`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${backOne}_c`, this.state[`${backOne}_c`])}}>Add</button><br/>
                         {this.state[`${this.state.selectedZID}_z`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
@@ -311,6 +288,7 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${backOne}_d`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${backOne}_d`, this.state[`${backOne}_d`])}}>Add</button><br/>
                         {this.state[`${this.state.selectedZID}_z`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
@@ -332,6 +310,7 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_a`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${this.state.selectedZID}_a`, this.state[`${this.state.selectedZID}_a`])}}>Add</button><br/>
                         <button onClick={this.setSelectedAFromNext}>Select</button>
                     </div>
                     <div className='item_cb'>
@@ -339,6 +318,7 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_b`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${this.state.selectedZID}_b`, this.state[`${this.state.selectedZID}_b`])}}>Add</button><br/>
                         <button onClick={this.setSelectedBFromNext}>Select</button>
                     </div>
                     <div className='item_cc'>
@@ -346,6 +326,7 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_c`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${this.state.selectedZID}_c`, this.state[`${this.state.selectedZID}_c`])}}>Add</button><br/>
                         <button onClick={this.setSelectedCFromNext}>Select</button>
                     </div>
                     <div className='item_cd'>
@@ -353,6 +334,7 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_d`, e.target.value)}}
                         /><br/>
+                        <button onClick={()=>{this.sendToDatabase(`${this.state.selectedZID}_d`, this.state[`${this.state.selectedZID}_d`])}}>Add</button><br/>
                         <button onClick={this.setSelectedDFromNext}>Select</button>
                     </div>
                 </div>
