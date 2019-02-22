@@ -87,6 +87,7 @@ class BuildComponents extends React.Component {
         this.setState({selectedZID: newSelectedZID})
     }
     aColumn = ()=>{
+        let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
         let backTwo = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 2).join('')
         let selectedBackOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
         let previousAbcd = this.state.selectedZID.split('').slice(this.state.selectedZID.length - 2, this.state.selectedZID.length - 1)[0]
@@ -177,6 +178,15 @@ class BuildComponents extends React.Component {
                         {this.state[`${selectedBackOne}_z`]}<br/>
                         <button onClick={this.setSelectedBackOne}>d</button>
                     </div>
+                </div>
+            )
+        }else if(previousAbcd === 'z'){
+            return (
+                <div className='item_z'>                
+                    {this.state[`${backOne}`]}<br/>
+                        <input 
+                            onChange={(e)=>{this.handleChange(`${backOne}`, e.target.value)}}
+                        /><br/>
                 </div>
             )
         }
