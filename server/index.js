@@ -53,3 +53,7 @@ app.get('/api/user', userCtrl.getUser);
 app.post(`/api/buildinfotodatabase`, buildCtrl.infoToDatabase);
 
 app.post(`/api/createadventure`, buildCtrl.createAdventure);
+
+app.post(`/api/does_z_id_exist`, buildCtrl.doesZIDExist);
+
+app.post(`/api/create_new_row`, buildCtrl.createNewRow)

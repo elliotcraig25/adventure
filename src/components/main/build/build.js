@@ -82,6 +82,29 @@ class BuildComponents extends React.Component {
         const aID = this.state.adventure_id
         axios.post(`/api/buildinfotodatabase`, {prop, val, aID})
     }
+    createNewRow(prop, val){
+        const aID = this.state.adventure_id
+        let newZID = `${this.state.selectedZID}`
+        // console.log(`here it is agin`, newZID)
+        axios.post(`/api/create_new_row`, {newZID, aID})
+        .then(()=>{
+            this.sendToDatabase(prop, val)
+        }) 
+    }
+    addOrUpdate(prop, val){
+        let movingTo = `${this.state.selectedZID}`;
+        const aID = this.state.adventure_id;
+        axios.post(`/api/does_z_id_exist`, {movingTo, aID})
+        .then(response=>{
+            // console.log(response.data[0])
+            if(response.data[0]){
+                this.sendToDatabase(prop, val)
+            }else{                
+                this.createNewRow(prop, val)
+                // console.log(response.data[0], `doesn't exist`)
+            }
+        })
+    }
     aColumn = ()=>{
         let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
         let backTwo = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 2).join('')
@@ -210,7 +233,11 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${backOne}_a`, e.target.value)}}
                         /><br/>
-                        <button onClick={()=>{this.sendToDatabase(`${backOne}_a`, this.state[`${backOne}_a`])}}>Add</button><br/>
+                        {/* <button onClick={()=>{this.sendToDatabase(`${backOne}_a`, this.state[`${backOne}_a`])}}>Add</button><br/> */}
+
+                        {/* test */}
+                        <button onClick={()=>{this.addOrUpdate(`${backOne}_a`, this.state[`${backOne}_a`])}}>Add</button><br/>
+
                         {this.state[`${this.state.selectedZID}_z`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
@@ -243,7 +270,11 @@ class BuildComponents extends React.Component {
                         <input 
                             onChange={(e)=>{this.handleChange(`${backOne}_b`, e.target.value)}}
                         /><br/>
-                        <button onClick={()=>{this.sendToDatabase(`${backOne}_b`, this.state[`${backOne}_b`])}}>Add</button><br/>
+                        {/* <button onClick={()=>{this.sendToDatabase(`${backOne}_b`, this.state[`${backOne}_b`])}}>Add</button><br/> */}
+                        
+                        {/* test */}
+                        <button onClick={()=>{this.addOrUpdate(`${backOne}_b`, this.state[`${backOne}_b`])}}>Add</button><br/>
+
                         {this.state[`${this.state.selectedZID}_z`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
