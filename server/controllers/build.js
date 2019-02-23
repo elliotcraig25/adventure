@@ -34,7 +34,7 @@ module.exports = {
             let rowToChangeAID = aID;
             console.log({columnToChange});
             console.log({rowToChangeZID});
-            console.log({rowToChangeAID});
+            console.log({rowToChangeAID}); 
             console.log({val});
             // await db.build.insertIntoZABCD(
             //     [columnToChange, rowToChangeZID, rowToChangeAID, val]
