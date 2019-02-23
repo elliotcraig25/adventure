@@ -41,6 +41,22 @@ module.exports = {
             // db.build.doesZIDExist([rowToChangeZID, rowToChangeAID])
             // .then(console.log(`does exist`))
             // .catch(console.log(`doesn't exist`))
+            if(columnToChange === 'z'){
+                const db = req.app.get('db');
+                db.build.editZ([val, rowToChangeZID, rowToChangeAID]);
+            }else if(columnToChange === 'a'){
+                const db = req.app.get('db');
+                db.build.editA([val, rowToChangeZID, rowToChangeAID]);
+            }else if(columnToChange === 'b'){
+                const db = req.app.get('db');
+                db.build.editB([val, rowToChangeZID, rowToChangeAID]);
+            }else if(columnToChange === 'c'){
+                const db = req.app.get('db');
+                db.build.editC([val, rowToChangeZID, rowToChangeAID]);
+            }else if(columnToChange === 'd'){
+                const db = req.app.get('db');
+                db.build.editD([val, rowToChangeZID, rowToChangeAID]);
+            }
         }
     },
     createAdventure: async (req, res)=>{
