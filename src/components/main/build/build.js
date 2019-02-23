@@ -92,7 +92,7 @@ class BuildComponents extends React.Component {
         }) 
     }
     addOrUpdate(prop, val){
-        let movingTo = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('');
+        let movingTo = this.state.selectedZID        
         const aID = this.state.adventure_id;
         axios.post(`/api/does_z_id_exist`, {movingTo, aID})
         .then(response=>{
@@ -215,7 +215,7 @@ class BuildComponents extends React.Component {
                     <input 
                         onChange={(e)=>{this.handleChange(`${backOne}`, e.target.value)}}
                     /><br/>
-                    <button onClick={()=>{this.sendToDatabase(`${backOne}`, this.state[`${backOne}`])}}>Add</button><br/>
+                    <button onClick={()=>{this.addOrUpdate(`${backOne}`, this.state[`${backOne}`])}}>Add</button><br/>
                 </div>
             )
         }
@@ -227,7 +227,7 @@ class BuildComponents extends React.Component {
         // console.log(selecteAbcd)
         if(selectedAbcd === 'a'){
             return (
-                <div className='container_b'>                
+                <div className='container_b'>
                     <div className='a_item_aa'>  
                         {this.state[`${backOne}_a`]}<br/>
                         <input 

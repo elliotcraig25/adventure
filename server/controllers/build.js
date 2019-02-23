@@ -22,10 +22,11 @@ module.exports = {
         })
     }, 
     infoToDatabase: async (req, res)=>{
-        const db = req.app.get('db');
         let {prop, val, aID} = req.body;
         if(prop === 'z'){
-            console.log('just z')
+            const db = req.app.get('db');
+            let rowToChangeAID = aID;
+            db.build.editZ([val, prop, rowToChangeAID]); 
         }else{
             let propSplit = prop.split('');
             let columnToChange = propSplit.pop();
@@ -67,5 +68,12 @@ module.exports = {
         )
         // console.log({newAdventure})
         res.status(200).send(newAdventure[0]);
+        // console.log(newAdventure[0].adventure_id)
+        db.build.insert_new_row(['z', newAdventure[0].adventure_id])
+        .then(response=>res.sendStatus(200))
+        .catch(err=>{
+            res.sendStatus(500)
+            console.log(err) 
+        })
     }
 }
