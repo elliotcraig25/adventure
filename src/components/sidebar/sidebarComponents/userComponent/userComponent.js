@@ -111,8 +111,8 @@ class UserComponent extends React.Component {
         const {username, password} = this.state;
         return (
             <div className='user_component_child_logging_in'>
-                <div className='registering_border_top'></div>
-                <div className='registering_border_bottom'></div>
+                <div className='login_border_top'></div>
+                <div className='login_border_bottom'></div>
                 <div className='profile_pic_three'></div>
                 <input 
                     className='loggin_in_input_one'

@@ -218,3 +218,17 @@
     grid-row-start: 9;
     grid-row-end: 10;
 }
+
+.login_border_top {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    border-top: solid black 1px;
+}
+
+.login_border_bottom {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 11;
+    grid-row-end: 12;
+    border-bottom: solid black 1px;
+}
