@@ -30,12 +30,27 @@ class Abcd extends React.Component {
                 })
             )
         }
-    }  
+    }
+    whatToRender = ()=>{
+        if(this.state.info.z_type === 'default'){
+            return (
+                <div>
+                    {this.state.info[this.props.oID]} 
+                </div>
+            )
+        }else{
+            return (
+                <div>
+                    It's not default
+                </div>
+            )
+        }
+    }
     render(){
         // console.log(this.state.info)
         return (
             <div>
-                {this.state.info[this.props.oID]} 
+                {this.whatToRender()}
             </div>
         )
     }
