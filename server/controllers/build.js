@@ -24,7 +24,7 @@ module.exports = {
     infoToDatabase: async (req, res)=>{
         let {prop, val, aID} = req.body;
         if(prop === 'z'){
-            const db = req.app.get('db');
+            const db = req.app.get('db'); 
             let rowToChangeAID = aID;
             db.build.editZ([val, prop, rowToChangeAID]); 
         }else{
@@ -74,6 +74,22 @@ module.exports = {
         .catch(err=>{
             res.sendStatus(500)
             console.log(err) 
+        })
+    },
+    addTitle: async (req, res)=>{
+        const {adventure_id, adventureTitle} = req.body;
+        const db = req.app.get('db');
+        db.build.addToAll(adventure_id)
+        .then(res=>res.sendStatus(200))
+        .catch(err=>{
+            res.sendStatus(500)
+            console.log(err)
+        })
+        db.build.addTitle([adventure_id, adventureTitle])
+        .then(res=>res.sendStatus(200))
+        .catch(err=>{
+            res.sendStatus(500)
+            console.log(err)
         })
     }
 }

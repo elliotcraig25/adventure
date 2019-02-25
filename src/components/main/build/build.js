@@ -18,7 +18,7 @@ class BuildComponents extends React.Component {
         axios.post(`/api/createadventure`, {userMakingTheAdventure})
         .then((res)=>{
             console.log(res.data.adventure_id)
-            this.setState({adventure_id: res.data.adventure_id})
+            this.setState({adventure_id: res.data.adventure_id}) 
         })
     }
     setSelectedA = ()=>{
@@ -104,6 +104,15 @@ class BuildComponents extends React.Component {
                 // console.log(response.data[0], `doesn't exist`)
             }
         })
+    }
+    viewTextToggle = (prop, val)=>{
+        this.setState({
+            [prop]: val
+        })
+    }
+    addTitle = ()=>{
+        const {adventure_id, adventureTitle} = this.state
+        axios.post(`/api/add_title`, {adventure_id, adventureTitle})
     }
     aColumn = ()=>{
         let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
@@ -211,6 +220,7 @@ class BuildComponents extends React.Component {
                     <input 
                         onChange={(e)=>{this.handleChange(`adventureTitle`, e.target.value)}}
                     /><br/>
+                    <button onClick={this.addTitle}>This is the title</button><br/>
                     {this.state[`${backOne}`]}<br/>
                     <input 
                         onChange={(e)=>{this.handleChange(`${backOne}`, e.target.value)}}
@@ -228,19 +238,37 @@ class BuildComponents extends React.Component {
         if(selectedAbcd === 'a'){
             return (
                 <div className='container_b'>
-                    <div className='a_item_aa'>  
-                        {this.state[`${backOne}_a`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${backOne}_a`, e.target.value)}}
-                        /><br/>
-
-                        <button onClick={()=>{this.addOrUpdate(`${backOne}_a`, this.state[`${backOne}_a`])}}>Add</button><br/>
-
-                        {this.state[`${this.state.selectedZID}_z`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
-                        /><br/>
-                        <button onClick={()=>{this.addOrUpdate(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])}}>Add</button><br/>
+                    <div className='a_item_aa'>
+                        {
+                            this.state[`${backOne}_a_toggle`] ? (
+                                <div>{this.state[`${backOne}_a`]}<br/></div>
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${backOne}_a`, e.target.value)}}
+                                    /><br/>
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${backOne}_a`, this.state[`${backOne}_a`])
+                                        this.viewTextToggle(`${backOne}_a_toggle`, true)
+                                    }}>Add</button><br/>
+                                </div>
+                            )
+                        }
+                        {
+                            this.state[`${this.state.selectedZID}_z_toggle`] ? (
+                                <div>{this.state[`${this.state.selectedZID}_z`]}<br/></div>
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
+                                    /><br/>
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])
+                                        this.viewTextToggle(`${this.state.selectedZID}_z_toggle`, true)
+                                    }}>Add</button><br/>
+                                </div>
+                            )
+                        }
                     </div>
                     <div className='a_item_ab'>
                         {this.state[`${backOne}_b`]}<br/>
@@ -264,18 +292,36 @@ class BuildComponents extends React.Component {
                         <button onClick={this.setSelectedA}>Select</button> 
                     </div>
                     <div className='b_item_ab'>
-                        {this.state[`${backOne}_b`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${backOne}_b`, e.target.value)}}
-                        /><br/>
-                        
-                        <button onClick={()=>{this.addOrUpdate(`${backOne}_b`, this.state[`${backOne}_b`])}}>Add</button><br/>
-
-                        {this.state[`${this.state.selectedZID}_z`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
-                        /><br/>
-                        <button onClick={()=>{this.addOrUpdate(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])}}>Add</button><br/>
+                        {
+                            this.state[`${backOne}_b_toggle`] ? (
+                                <div>{this.state[`${backOne}_b`]}<br/></div>
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${backOne}_b`, e.target.value)}}
+                                    /><br/>
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${backOne}_b`, this.state[`${backOne}_b`])
+                                        this.viewTextToggle(`${backOne}_b_toggle`, true)
+                                    }}>Add</button><br/>
+                                </div>
+                            )
+                        }
+                        {
+                            this.state[`${this.state.selectedZID}_z_toggle`] ? (
+                                <div>{this.state[`${this.state.selectedZID}_z`]}<br/></div>
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
+                                    /><br/>
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])
+                                        this.viewTextToggle(`${this.state.selectedZID}_z_toggle`, true)
+                                    }}>Add</button><br/>
+                                </div>
+                            )
+                        }
                     </div>
                     <div className='b_item_ac'>
                         {this.state[`${backOne}_c`]}<br/>
@@ -299,18 +345,38 @@ class BuildComponents extends React.Component {
                         <button onClick={this.setSelectedB}>Select</button>
                     </div>
                     <div className='c_item_ac'>
-                        {this.state[`${backOne}_c`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${backOne}_c`, e.target.value)}}
-                        /><br/>
-
-                        <button onClick={()=>{this.addOrUpdate(`${backOne}_c`, this.state[`${backOne}_c`])}}>Add</button><br/>
-
-                        {this.state[`${this.state.selectedZID}_z`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
-                        /><br/>
-                        <button onClick={()=>{this.addOrUpdate(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])}}>Add</button><br/>
+                        {
+                            this.state[`${backOne}_c_toggle`] ? (
+                                <div>{this.state[`${backOne}_c`]}<br/></div>
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${backOne}_c`, e.target.value)}}
+                                    /><br/>
+    
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${backOne}_c`, this.state[`${backOne}_c`])
+                                        this.viewTextToggle(`${backOne}_c_toggle`, true)
+                                    }}>Add</button><br/>
+                                </div>
+                            )
+                        }
+                        {
+                            this.state[`${this.state.selectedZID}_z_toggle`] ? (
+                                <div>{this.state[`${this.state.selectedZID}_z`]}<br/></div>
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
+                                    /><br/>
+    
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])
+                                        this.viewTextToggle(`${this.state.selectedZID}_z_toggle`, true)
+                                    }}>Add</button><br/>
+                                </div>
+                            )
+                        }
                     </div>
                     <div className='c_item_ad'>
                         {this.state[`${backOne}_d`]}<br/>
@@ -334,37 +400,77 @@ class BuildComponents extends React.Component {
                         <button onClick={this.setSelectedC}>Select</button>
                     </div>
                     <div className='d_item_ad'>
-                        {this.state[`${backOne}_d`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${backOne}_d`, e.target.value)}}
-                        /><br/>
-
-                        <button onClick={()=>{this.addOrUpdate(`${backOne}_d`, this.state[`${backOne}_d`])}}>Add</button><br/>
-
-                        {this.state[`${this.state.selectedZID}_z`]}<br/>
-                        <input 
-                            onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
-                        /><br/>
-                        <button onClick={()=>{this.addOrUpdate(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])}}>Add</button><br/>
+                        {
+                            this.state[`${backOne}_d_toggle`] ? (
+                                <div>{this.state[`${backOne}_d`]}<br/></div>
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${backOne}_d`, e.target.value)}}
+                                    /><br/>
+    
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${backOne}_d`, this.state[`${backOne}_d`])
+                                        this.viewTextToggle(`${backOne}_d_toggle`, true)
+                                    }}>Add</button><br/>
+                                </div>
+                            )
+                        }
+                        {
+                            this.state[`${this.state.selectedZID}_z_toggle`] ? (
+                                <div>{this.state[`${this.state.selectedZID}_z`]}<br/></div>
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_z`, e.target.value)}}
+                                    /><br/>
+    
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${this.state.selectedZID}_z`, this.state[`${this.state.selectedZID}_z`])
+                                        this.viewTextToggle(`${this.state.selectedZID}_z_toggle`, true)
+                                    }}>Add</button><br/>
+                                </div>
+                            )
+                        }                        
                     </div> 
                 </div>
             )
         }
     }
     render(){
-        console.log(this.state.adventure_id)
+        // console.log(this.state.adventure_id)
         return ( 
             <div className='container'> 
                 {this.aColumn()}
                 {this.bColumn()}
                 <div className='container_c'>                
                     <div className='item_ca'>
-                        {this.state[`${this.state.selectedZID}_a`]}<br/>
+                        {
+                            this.state[`${this.state.selectedZID}_a_toggle`] ? (
+                                <div>
+                                    {this.state[`${this.state.selectedZID}_a`]}<br/>
+                                    <button onClick={this.setSelectedAFromNext}>Select</button>
+                                </div>                                
+                            ):(
+                                <div>
+                                    <input 
+                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_a`, e.target.value)}}
+                                    /><br/>
+    
+                                    <button onClick={()=>{
+                                        this.addOrUpdate(`${this.state.selectedZID}_a`, this.state[`${this.state.selectedZID}_a`])
+                                        this.viewTextToggle(`${this.state.selectedZID}_a_toggle`, true)
+                                    }}>Add</button><br/>
+                                    <button onClick={this.setSelectedAFromNext}>Select</button>
+                                </div>
+                            )
+                        }   
+                        {/* {this.state[`${this.state.selectedZID}_a`]}<br/>
                         <input 
                             onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_a`, e.target.value)}}
                         /><br/>
                         <button onClick={()=>{this.sendToDatabase(`${this.state.selectedZID}_a`, this.state[`${this.state.selectedZID}_a`])}}>Add</button><br/>
-                        <button onClick={this.setSelectedAFromNext}>Select</button>
+                        <button onClick={this.setSelectedAFromNext}>Select</button> */}
                     </div>
                     <div className='item_cb'>
                         {this.state[`${this.state.selectedZID}_b`]}<br/>
