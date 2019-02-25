@@ -45,6 +45,83 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 11;
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 18px 54px 27px 9px 18px 18px 9px 27px 54px 1fr;
+    grid-template-rows: 18px 18px 18px 9px 18px 9px 18px 18px 18px 18px 1fr 18px 18px 18px;
+}
+
+.title_and_categories_header {
+    grid-column-start: 2;
+    grid-column-end: 10;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.title_input {
+    grid-column-start: 2;
+    grid-column-end: 10;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.category_dropdown_one {
+    background-color: cornsilk;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+.category_dropdown_two {
+    background-color: cornsilk;
+    grid-column-start: 4;
+    grid-column-end: 8;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+.category_dropdown_three {
+    background-color: cornsilk;
+    grid-column-start: 9;
+    grid-column-end: 10;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+.add_title_and_categories {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 7;
+    grid-row-end: 8;
+}
+
+.z_textarea {
+    grid-column-start: 2;
+    grid-column-end: 10;
+    grid-row-start: 11;
+    grid-row-end: 12;
+}
+
+.add_z_testarea {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 13;
+    grid-row-end: 14;
+}
+
+.item_z_id {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 9;
+    grid-row-end: 10;
+}
+
+.item_z_type {
+    grid-column-start: 7;
+    grid-column-end: 10;
+    grid-row-start: 9;
+    grid-row-end: 10;
 }
 
 .a_item_aa {
@@ -53,6 +130,58 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 11;
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 1fr 90px 36px 54px 18px 18px 1fr;
+    grid-template-rows: 18px 18px 9px 18px 9px 1fr 9px 18px 18px;
+}
+
+.a_item_aa_id {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.a_item_aa_type {
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.a_item_aa_input_and_add {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.a_item_aa_textarea_and_add {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 6;
+    grid-row-end: 9;
+    display: grid;
+    grid-template-columns: 5fr 2fr 5fr;
+    grid-template-rows: 1fr 9px 18px;
+}
+
+.a_item_aa_z_textarea {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.a_item_aa_z_button {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
 }
 
 .a_item_ab {
@@ -61,6 +190,7 @@
     grid-column-end: 2;
     grid-row-start: 12;
     grid-row-end: 14;
+    border-radius: 18px;
 }
 
 .a_item_ac {
@@ -69,6 +199,7 @@
     grid-column-end: 2;
     grid-row-start: 15;
     grid-row-end: 17;
+    border-radius: 18px;
 }
 
 .a_item_ad {
@@ -77,6 +208,7 @@
     grid-column-end: 2;
     grid-row-start: 18;
     grid-row-end: 20;
+    border-radius: 18px;
 }
 
 .b_item_aa {
@@ -85,6 +217,7 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 3;
+    border-radius: 18px;
 }
 
 .b_item_ab {
@@ -93,6 +226,10 @@
     grid-column-end: 2;
     grid-row-start: 4;
     grid-row-end: 14;
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 1fr 90px 36px 54px 18px 18px 1fr;
+    grid-template-rows: 18px 18px 9px 18px 9px 1fr 9px 18px 18px;
 }
 
 .b_item_ac {
@@ -101,6 +238,7 @@
     grid-column-end: 2;
     grid-row-start: 15;
     grid-row-end: 17;
+    border-radius: 18px;
 }
 
 .b_item_ad {
@@ -109,6 +247,7 @@
     grid-column-end: 2;
     grid-row-start: 18;
     grid-row-end: 20;
+    border-radius: 18px;
 }
 
 .c_item_aa {
@@ -117,6 +256,7 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 3;
+    border-radius: 18px;
 }
 
 .c_item_ab {
@@ -125,6 +265,7 @@
     grid-column-end: 2;
     grid-row-start: 4;
     grid-row-end: 6;
+    border-radius: 18px;
 }
 
 .c_item_ac {
@@ -133,6 +274,10 @@
     grid-column-end: 2;
     grid-row-start: 7;
     grid-row-end: 17;
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 1fr 90px 36px 54px 18px 18px 1fr;
+    grid-template-rows: 18px 18px 9px 18px 9px 1fr 9px 18px 18px;
 }
 
 .c_item_ad {
@@ -141,6 +286,7 @@
     grid-column-end: 2;
     grid-row-start: 18;
     grid-row-end: 20;
+    border-radius: 18px;
 }
 
 .d_item_aa {
@@ -149,6 +295,7 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 3;
+    border-radius: 18px;
 }
 
 .d_item_ab {
@@ -157,6 +304,7 @@
     grid-column-end: 2;
     grid-row-start: 4;
     grid-row-end: 6;
+    border-radius: 18px;
 }
 
 .d_item_ac {
@@ -165,6 +313,7 @@
     grid-column-end: 2;
     grid-row-start: 7;
     grid-row-end: 9;
+    border-radius: 18px;
 }
 
 .d_item_ad {
@@ -173,6 +322,10 @@
     grid-column-end: 2;
     grid-row-start: 10;
     grid-row-end: 20;
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 1fr 90px 36px 54px 18px 18px 1fr;
+    grid-template-rows: 18px 18px 9px 18px 9px 1fr 9px 18px 18px;
 }
 
 .item_ca {
@@ -181,6 +334,7 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 5;
+    border-radius: 18px;
 }
 
 .item_cb {
@@ -189,6 +343,7 @@
     grid-column-end: 2;
     grid-row-start: 6;
     grid-row-end: 10;
+    border-radius: 18px;
 }
 
 .item_cc {
@@ -197,6 +352,7 @@
     grid-column-end: 2;
     grid-row-start: 11;
     grid-row-end: 15;
+    border-radius: 18px;
 }
 
 .item_cd {
@@ -205,6 +361,7 @@
     grid-column-end: 2;
     grid-row-start: 16;
     grid-row-end: 20;
+    border-radius: 18px;
 }
 
 .tree_dashboard_container {
@@ -213,6 +370,7 @@
     grid-row-start: 1;
     grid-row-end: 2;
     background-color: lightgreen;
+    border-radius: 18px;
 }
 
 .selected_dashboard_container {
@@ -221,4 +379,5 @@
     grid-row-start: 3;
     grid-row-end: 4;
     background-color: lightgreen;
+    border-radius: 18px;
 }

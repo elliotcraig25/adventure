@@ -77,13 +77,18 @@
     align-items: center;
     justify-content: space-around;
 }
-
-.sidebar_links {
-    /* border: solid black 1px; */
-    grid-column-start: 1;
-    grid-column-end: 2;
+.links_container {
+    display: grid;
+    grid-template-columns: 18px 1fr 18px;
     grid-row-start: 4;
     grid-row-end: 5;
+}
+.sidebar_links {
+    /* border: solid black 1px; */
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .user_component_child_registering {

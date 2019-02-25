@@ -1,4 +1,6 @@
 .head-side-main {
+    /* background-image: url(../../assets/Locator_Grid.png);
+    background-repeat: repeat-y repeat-x; */
     background-color: slategray;
     height: 100vh;
     width: 100%;
@@ -8,7 +10,7 @@
 }
 
 .head {
-    background-color: slategray;
+    /* background-color: slategray; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -28,10 +30,11 @@
     grid-column-end: 5;
     grid-row-start: 6;
     grid-row-end: 25;
+    border-radius: 18px;
 }
 
 .main_view {
-    background-color: slategray;
+    /* background-color: slategray; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

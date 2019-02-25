@@ -38,6 +38,12 @@ class Abcd extends React.Component {
                     {this.state.info[this.props.oID]} 
                 </div>
             )
+        }else if(!this.state.info.z_type){
+            return (
+                <div>
+                    you chose a blank option
+                </div>
+            )
         }else{
             return (
                 <div>
