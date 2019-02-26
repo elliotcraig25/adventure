@@ -41,10 +41,10 @@ class Scenario extends React.Component {
             <div className='scenario_and_options'>
                 <div className='the_scenario'>
                     <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
-                </div>                
+                </div>
                 <button onClick={this.joinWithA} className='options_a'>
                     <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
-                </button>                    
+                </button>
                 <button onClick={this.joinWithB} className='options_b'>
                     <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
                 </button>

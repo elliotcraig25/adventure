@@ -196,8 +196,10 @@ class BuildComponents extends React.Component {
         // console.log({selectedBackOne})
         if(previousAbcd === 'a'){
             return (
-                <div className='container_a'>                
+                <div className='container_a'>  
                     <div className='a_item_aa'>
+                        <div className='a_item_aa_id'>ID: {backOne}</div>
+                        <div className='a_item_aa_type'>Type: default</div>              
                         <div className='previous_option_text'>
                             {this.state[`${backTwo}_a`]}
                         </div>
@@ -239,6 +241,8 @@ class BuildComponents extends React.Component {
                         <button className='a_item_ab_select_button' onClick={this.setSelectedAFromPrev}>Select</button> 
                     </div>
                     <div className='b_item_ab'>
+                        <div className='a_item_aa_id'>ID: {backOne}</div>
+                        <div className='a_item_aa_type'>Type: default</div> 
                         <div className='previous_option_text'>
                             {this.state[`${backTwo}_b`]}
                         </div>
@@ -280,6 +284,8 @@ class BuildComponents extends React.Component {
                         <button className='a_item_ab_select_button' onClick={this.setSelectedBFromPrev}>Select</button>
                     </div>
                     <div className='c_item_ac'>
+                        <div className='a_item_aa_id'>ID: {backOne}</div>
+                        <div className='a_item_aa_type'>Type: default</div> 
                         <div className='previous_option_text'>
                             {this.state[`${backTwo}_c`]}
                         </div>
@@ -321,6 +327,8 @@ class BuildComponents extends React.Component {
                         <button className='a_item_ab_select_button' onClick={this.setSelectedCFromPrev}>Select</button> 
                     </div>
                     <div className='d_item_ad'>
+                        <div className='a_item_aa_id'>ID: {backOne}</div>
+                        <div className='a_item_aa_type'>Type: default</div> 
                         <div className='previous_option_text'>
                             {this.state[`${backTwo}_d`]}
                         </div>
@@ -337,8 +345,18 @@ class BuildComponents extends React.Component {
         }else if(previousAbcd === 'z'){
             return (
                 <div className='item_z'>
-                    <div className='title_and_categories_header'>Title and Categories</div>
+                    <div className='title_and_categories_header'>Title</div>
                     {/* {this.state.adventureTitle} */}
+                    {
+                        this.state.z_text_toggle ? (
+                            <div className='z_textarea'>{this.state[`${backOne}`]}</div>
+                        ):(
+                            <textarea
+                                className='z_textarea'
+                                onChange={(e)=>{this.handleChange(`${backOne}`, e.target.value)}}
+                            />
+                        )
+                    }
                     <input 
                         className='title_input'
                         onChange={(e)=>{this.handleChange(`adventureTitle`, e.target.value)}}
@@ -351,18 +369,17 @@ class BuildComponents extends React.Component {
                         onClick={this.addTitle}>Add</button>
                     {/* {this.state[`${backOne}`]} */} 
                     <div className='item_z_id'>
-                        ID: Z
+                        ID: z
                     </div>
                     <div className='item_z_type'>
                         Type: default
-                    </div>
-                    <textarea
-                        className='z_textarea'
-                        onChange={(e)=>{this.handleChange(`${backOne}`, e.target.value)}}
-                    />
+                    </div>                    
                     <button 
                         className='add_z_testarea'
-                        onClick={()=>{this.addOrUpdate(`${backOne}`, this.state[`${backOne}`])}}>Add</button>
+                        onClick={()=>{
+                            this.addOrUpdate(`${backOne}`, this.state[`${backOne}`])
+                            this.viewTextToggle(`z_text_toggle`, true)
+                        }}>Add</button>
                 </div>
             )
         }
@@ -651,16 +668,19 @@ class BuildComponents extends React.Component {
                     <div className='item_ca'>
                         {/* { */}
                             {/* this.state[`${this.state.selectedZID}_a_toggle`] ? ( */}
-                                <div>
+                                <div className='item_ca_id'>
                                     ID: {this.state.selectedZID.slice(0) + 'a'}
                                 </div>
-                                <div>
+                                {/* <div className='item_ca_type'>
                                     Type: default
-                                </div>
-                                <div>
+                                </div> */}
+                                <div className='item_ca_text'>
                                     {this.state[`${this.state.selectedZID}_a`]}<br/>
                                 </div>                                
-                                <button onClick={this.setSelectedAFromNext}>Select</button>
+                                <button 
+                                    className='item_ca_button'
+                                    onClick={this.setSelectedAFromNext} 
+                                >Select</button>
                             {/* ):( */}
                                 {/* <div>
                                     <input 
@@ -679,16 +699,19 @@ class BuildComponents extends React.Component {
                     <div className='item_cb'>
                         {/* { */}
                             {/* this.state[`${this.state.selectedZID}_b_toggle`] ? ( */}
-                                <div>
+                                <div className='item_ca_id'>
                                     ID: {this.state.selectedZID.slice(0) + 'b'}
                                 </div>
-                                <div>
+                                {/* <div className='item_ca_type'>
                                     Type: default
-                                </div>
-                                <div>
+                                </div> */}
+                                <div className='item_ca_text'>
                                     {this.state[`${this.state.selectedZID}_b`]}<br/>
                                 </div>                                
-                                <button onClick={this.setSelectedBFromNext}>Select</button>
+                                <button 
+                                    className='item_ca_button'
+                                    onClick={this.setSelectedBFromNext}
+                                >Select</button>
                             {/* ):( */}
                                 {/* <div>
                                     <input 
@@ -707,16 +730,19 @@ class BuildComponents extends React.Component {
                     <div className='item_cc'>
                         {/* { */}
                             {/* this.state[`${this.state.selectedZID}_c_toggle`] ? ( */}
-                                <div>
+                                <div className='item_ca_id'>
                                     ID: {this.state.selectedZID.slice(0) + 'c'}
                                 </div>
-                                <div>
+                                {/* <div className='item_ca_type'>
                                     Type: default
-                                </div>
-                                <div>
+                                </div> */}
+                                <div className='item_ca_text'>
                                     {this.state[`${this.state.selectedZID}_c`]}<br/>
                                 </div>                                
-                                <button onClick={this.setSelectedCFromNext}>Select</button>
+                                <button 
+                                    className='item_ca_button'
+                                    onClick={this.setSelectedCFromNext}
+                                >Select</button>
                             {/* ):( */}
                                 {/* <div>
                                     <input 
@@ -735,16 +761,19 @@ class BuildComponents extends React.Component {
                     <div className='item_cd'>
                         {/* { */}
                             {/* this.state[`${this.state.selectedZID}_d_toggle`] ? ( */}
-                                <div>
+                                <div className='item_ca_id'>
                                     ID: {this.state.selectedZID.slice(0) + 'd'}
                                 </div>
-                                <div>
+                                {/* <div className='item_ca_type'>
                                     Type: default
-                                </div>
-                                <div>
+                                </div> */}
+                                <div className='item_ca_text'>
                                     {this.state[`${this.state.selectedZID}_d`]}<br/>
                                 </div>                                
-                                <button onClick={this.setSelectedDFromNext}>Select</button>
+                                <button 
+                                    className='item_ca_button'
+                                    onClick={this.setSelectedDFromNext}
+                                >Select</button>
                             {/* ):( */}
                                 {/* <div>
                                     <input 
