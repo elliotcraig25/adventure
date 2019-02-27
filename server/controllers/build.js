@@ -97,5 +97,18 @@ module.exports = {
             res.sendStatus(500)
             console.log(err)
         })
+    },
+    changeType: (req, res)=>{
+        const {loopInfo, selectedBranch, aID} = req.body;
+        console.log({loopInfo});
+        console.log({selectedBranch});
+        console.log({aID});
+        const db = req.app.get('db');
+        db.build.changeToLoop([loopInfo, selectedBranch, aID])
+        .then(res=>res.sendStatus(200))
+        .catch(err=>{
+            res.sendStatus(500)
+            console.log(err)
+        })
     }
 }

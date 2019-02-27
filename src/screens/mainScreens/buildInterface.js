@@ -4,8 +4,6 @@ import './mainScreen.css';
 import Header from '../../components/header/header';
 import Sidebar from '../../components/sidebar/sidebar';
 import BuildComponent from '../../components/main/build/build';
-import TreeDashboard from '../../components/main/build/treeDashboard';
-import SelectedDashboard from '../../components/main/build/selectedDashboard';
 
 class BuildInterface extends React.Component {
     constructor(props){
@@ -34,12 +32,8 @@ class BuildInterface extends React.Component {
                 </div>               
                 <div className='side'>
                     <Sidebar />
-                </div>
-                <div className='main_build'>
-                    <BuildComponent />
-                    <TreeDashboard />
-                    <SelectedDashboard />
                 </div>                
+                <BuildComponent />
             </div>
         )
     };

@@ -3,6 +3,9 @@ import './build.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
 
+import TreeDashboard from './treeDashboard';
+import SelectedDashboard from './selectedDashboard';
+
 class BuildComponents extends React.Component {
     constructor(props){
         super(props);
@@ -20,6 +23,17 @@ class BuildComponents extends React.Component {
             console.log(res.data.adventure_id)
             this.setState({adventure_id: res.data.adventure_id}) 
         })
+    }
+    changeSelectedZIDType = ()=>{
+        if(!this.state[`${this.state.selectedZID}Type`] || this.state[`${this.state.selectedZID}Type`] === 'default'){            
+            this.setState({
+                [`${this.state.selectedZID}Type`]: 'loop'
+            })
+        }else{       
+            this.setState({
+                [`${this.state.selectedZID}Type`]: 'default'
+            })     
+        }
     }
     setSelectedA = ()=>{
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'a'
@@ -394,7 +408,7 @@ class BuildComponents extends React.Component {
                 <div className='container_b'>
                     <div className='a_item_aa'>
                         <div className='a_item_aa_id'>ID: {this.state.selectedZID}</div>
-                        <div className='a_item_aa_type'>Type: default</div>
+                        <div className='a_item_aa_type'>Type: {this.state[`${this.state.selectedZID}Type`]}</div>
                         {
                             this.state[`${backOne}_a_toggle`] ? (
                                 <div className='a_item_aa_input_and_add'>
@@ -466,7 +480,7 @@ class BuildComponents extends React.Component {
                     </div>
                     <div className='b_item_ab'>
                         <div className='a_item_aa_id'>ID: {this.state.selectedZID}</div>
-                        <div className='a_item_aa_type'>Type: default</div>
+                        <div className='a_item_aa_type'>Type: {this.state[`${this.state.selectedZID}Type`]}</div>
                         {
                             this.state[`${backOne}_b_toggle`] ? (
                                 <div  className='a_item_aa_input_and_add'>                                    
@@ -538,7 +552,7 @@ class BuildComponents extends React.Component {
                     </div>
                     <div className='c_item_ac'>
                         <div className='a_item_aa_id'>ID: {this.state.selectedZID}</div>
-                        <div className='a_item_aa_type'>Type: default</div>
+                        <div className='a_item_aa_type'>Type: {this.state[`${this.state.selectedZID}Type`]}</div>
                         {
                             this.state[`${backOne}_c_toggle`] ? (
                                 <div className='a_item_aa_input_and_add'>                                    
@@ -611,7 +625,7 @@ class BuildComponents extends React.Component {
                     </div>
                     <div className='d_item_ad'>
                         <div className='a_item_aa_id'>ID: {this.state.selectedZID}</div>
-                        <div className='a_item_aa_type'>Type: default</div>
+                        <div className='a_item_aa_type'>Type: {this.state[`${this.state.selectedZID}Type`]}</div>
                         {
                             this.state[`${backOne}_d_toggle`] ? (
                                 <div className='a_item_aa_input_and_add'>                                    
@@ -661,136 +675,70 @@ class BuildComponents extends React.Component {
     render(){
         // console.log(this.state.adventure_id)
         return ( 
-            <div className='container'> 
-                {this.aColumn()}
-                {this.bColumn()}
-                <div className='container_c'>                
-                    <div className='item_ca'>
-                        {/* { */}
-                            {/* this.state[`${this.state.selectedZID}_a_toggle`] ? ( */}
-                                <div className='item_ca_id'>
-                                    ID: {this.state.selectedZID.slice(0) + 'a'}
-                                </div>
-                                {/* <div className='item_ca_type'>
-                                    Type: default
-                                </div> */}
-                                <div className='item_ca_text'>
-                                    {this.state[`${this.state.selectedZID}_a`]}<br/>
-                                </div>                                
-                                <button 
-                                    className='item_ca_button'
-                                    onClick={this.setSelectedAFromNext} 
-                                >Select</button>
-                            {/* ):( */}
-                                {/* <div>
-                                    <input 
-                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_a`, e.target.value)}}
-                                    /><br/>
-    
-                                    <button onClick={()=>{
-                                        this.addOrUpdate(`${this.state.selectedZID}_a`, this.state[`${this.state.selectedZID}_a`])
-                                        this.viewTextToggle(`${this.state.selectedZID}_a_toggle`, true)
-                                    }}>Add</button><br/>
-                                    <button onClick={this.setSelectedAFromNext}>Select</button>
-                                </div> */}
-                            {/* ) */}
-                        {/* }  */}
-                    </div>
-                    <div className='item_cb'>
-                        {/* { */}
-                            {/* this.state[`${this.state.selectedZID}_b_toggle`] ? ( */}
-                                <div className='item_ca_id'>
-                                    ID: {this.state.selectedZID.slice(0) + 'b'}
-                                </div>
-                                {/* <div className='item_ca_type'>
-                                    Type: default
-                                </div> */}
-                                <div className='item_ca_text'>
-                                    {this.state[`${this.state.selectedZID}_b`]}<br/>
-                                </div>                                
-                                <button 
-                                    className='item_ca_button'
-                                    onClick={this.setSelectedBFromNext}
-                                >Select</button>
-                            {/* ):( */}
-                                {/* <div>
-                                    <input 
-                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_b`, e.target.value)}}
-                                    /><br/>
-    
-                                    <button onClick={()=>{
-                                        this.addOrUpdate(`${this.state.selectedZID}_b`, this.state[`${this.state.selectedZID}_b`])
-                                        this.viewTextToggle(`${this.state.selectedZID}_b_toggle`, true)
-                                    }}>Add</button><br/>
-                                    <button onClick={this.setSelectedBFromNext}>Select</button>
-                                </div> */}
-                            {/* ) */}
-                        {/* }  */}
-                    </div>
-                    <div className='item_cc'>
-                        {/* { */}
-                            {/* this.state[`${this.state.selectedZID}_c_toggle`] ? ( */}
-                                <div className='item_ca_id'>
-                                    ID: {this.state.selectedZID.slice(0) + 'c'}
-                                </div>
-                                {/* <div className='item_ca_type'>
-                                    Type: default
-                                </div> */}
-                                <div className='item_ca_text'>
-                                    {this.state[`${this.state.selectedZID}_c`]}<br/>
-                                </div>                                
-                                <button 
-                                    className='item_ca_button'
-                                    onClick={this.setSelectedCFromNext}
-                                >Select</button>
-                            {/* ):( */}
-                                {/* <div>
-                                    <input 
-                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_c`, e.target.value)}}
-                                    /><br/>
-    
-                                    <button onClick={()=>{
-                                        this.addOrUpdate(`${this.state.selectedZID}_c`, this.state[`${this.state.selectedZID}_c`])
-                                        this.viewTextToggle(`${this.state.selectedZID}_c_toggle`, true)
-                                    }}>Add</button><br/>
-                                    <button onClick={this.setSelectedCFromNext}>Select</button>
-                                </div> */}
-                            {/* ) */}
-                        {/* }  */}
-                    </div>
-                    <div className='item_cd'>
-                        {/* { */}
-                            {/* this.state[`${this.state.selectedZID}_d_toggle`] ? ( */}
-                                <div className='item_ca_id'>
-                                    ID: {this.state.selectedZID.slice(0) + 'd'}
-                                </div>
-                                {/* <div className='item_ca_type'>
-                                    Type: default
-                                </div> */}
-                                <div className='item_ca_text'>
-                                    {this.state[`${this.state.selectedZID}_d`]}<br/>
-                                </div>                                
-                                <button 
-                                    className='item_ca_button'
-                                    onClick={this.setSelectedDFromNext}
-                                >Select</button>
-                            {/* ):( */}
-                                {/* <div>
-                                    <input 
-                                        onChange={(e)=>{this.handleChange(`${this.state.selectedZID}_d`, e.target.value)}}
-                                    /><br/>
-    
-                                    <button onClick={()=>{
-                                        this.addOrUpdate(`${this.state.selectedZID}_d`, this.state[`${this.state.selectedZID}_d`])
-                                        this.viewTextToggle(`${this.state.selectedZID}_d_toggle`, true)
-                                    }}>Add</button><br/>
-                                    <button onClick={this.setSelectedDFromNext}>Select</button>
-                                </div> */}
-                            {/* ) */}
-                        {/* }  */}
+            <div className='main_build'>
+                <div className='container'> 
+                    {this.aColumn()}
+                    {this.bColumn()}
+                    <div className='container_c'>                
+                        <div className='item_ca'>
+                            <div className='item_ca_id'>
+                                ID: {this.state.selectedZID.slice(0) + 'a'}
+                            </div>
+                            <div className='item_ca_text'>
+                                {this.state[`${this.state.selectedZID}_a`]}<br/>
+                            </div>                                
+                            <button 
+                                className='item_ca_button'
+                                onClick={this.setSelectedAFromNext} 
+                            >Select</button>
+                        </div>
+                        <div className='item_cb'>
+                            <div className='item_ca_id'>
+                                ID: {this.state.selectedZID.slice(0) + 'b'}
+                            </div>
+                            <div className='item_ca_text'>
+                                {this.state[`${this.state.selectedZID}_b`]}<br/>
+                            </div>                                
+                            <button 
+                                className='item_ca_button'
+                                onClick={this.setSelectedBFromNext}
+                            >Select</button>
+                        </div>
+                        <div className='item_cc'>
+                            <div className='item_ca_id'>
+                                ID: {this.state.selectedZID.slice(0) + 'c'}
+                            </div>
+                            <div className='item_ca_text'>
+                                {this.state[`${this.state.selectedZID}_c`]}<br/>
+                            </div>                                
+                            <button 
+                                className='item_ca_button'
+                                onClick={this.setSelectedCFromNext}
+                            >Select</button>
+                        </div>
+                        <div className='item_cd'>
+                            <div className='item_ca_id'>
+                                ID: {this.state.selectedZID.slice(0) + 'd'}
+                            </div>
+                            <div className='item_ca_text'>
+                                {this.state[`${this.state.selectedZID}_d`]}<br/>
+                            </div>                                
+                            <button 
+                                className='item_ca_button'
+                                onClick={this.setSelectedDFromNext}
+                            >Select</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <TreeDashboard />
+                <SelectedDashboard 
+                    changeSelectedZIDType={this.changeSelectedZIDType}
+                    aID={this.state.adventure_id}
+                    selectedBranch={this.state.selectedZID} 
+                    selectedZType={this.state[`${this.state.selectedZID}Type`]}
+                />
+            </div>  
+            
         )
     };
 };

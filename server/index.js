@@ -58,4 +58,6 @@ app.post(`/api/does_z_id_exist`, buildCtrl.doesZIDExist);
 
 app.post(`/api/create_new_row`, buildCtrl.createNewRow);
 
-app.post(`/api/add_title`, buildCtrl.addTitle)
+app.post(`/api/add_title`, buildCtrl.addTitle);
+
+app.post(`/api/changetypeloop`, buildCtrl.changeType);
