@@ -58,9 +58,24 @@ class Scenario extends React.Component {
                             aLoop: res.data.z_type.split(' ')[1]
                         })
                     }
+                    if(res.data.z_type.split(' ')[2] !== 'none' && res.data.z_type.split(' ')[2]){
+                        this.setState({
+                            bLoop: res.data.z_type.split(' ')[2]
+                        })
+                    }
+                    if(res.data.z_type.split(' ')[3] !== 'none' && res.data.z_type.split(' ')[3]){
+                        this.setState({
+                            cLoop: res.data.z_type.split(' ')[3]
+                        })
+                    }
+                    if(res.data.z_type.split(' ')[4] !== 'none' && res.data.z_type.split(' ')[4]){
+                        this.setState({
+                            dLoop: res.data.z_type.split(' ')[4]
+                        })
+                    }
                 }else{
                     // console.log(`please dont loop`)
-                }
+                }                
             }).catch(err=>console.log(err))
         }
     }
@@ -114,6 +129,63 @@ class Scenario extends React.Component {
             }) 
         } 
     }
+    isNotDefaultB = ()=>{
+        // this.props.updateReduxZABCD()
+        console.log(`in isNotDefaultB`)
+        if(this.state.bLoop !== this.state.zCur){
+            console.log(`hitting in first`)
+            this.setState({
+                zCur: this.state.bLoop
+            })
+        }else{
+            console.log(`hitting in second`)
+            this.setState({
+                zCur: this.state.zCur,
+                aLoop: null,
+                bLoop: null,
+                cLoop: null,
+                dLoop: null,
+            }) 
+        } 
+    }
+    isNotDefaultC = ()=>{
+        // this.props.updateReduxZABCD()
+        console.log(`in isNotDefaultC`)
+        if(this.state.cLoop !== this.state.zCur){
+            console.log(`hitting in first`)
+            this.setState({
+                zCur: this.state.cLoop
+            })
+        }else{
+            console.log(`hitting in second`)
+            this.setState({
+                zCur: this.state.zCur,
+                aLoop: null,
+                bLoop: null,
+                cLoop: null,
+                dLoop: null,
+            }) 
+        } 
+    }
+    isNotDefaultD = ()=>{
+        // this.props.updateReduxZABCD()
+        console.log(`in isNotDefaultD`)
+        if(this.state.dLoop !== this.state.zCur){
+            console.log(`hitting in first`)
+            this.setState({
+                zCur: this.state.dLoop
+            })
+        }else{
+            console.log(`hitting in second`)
+            this.setState({
+                zCur: this.state.zCur,
+                aLoop: null,
+                bLoop: null,
+                cLoop: null,
+                dLoop: null,
+            }) 
+        } 
+    }
     whereAShouldGo = ()=>{
         this.getZType()
         if(this.state.aLoop){
@@ -123,24 +195,25 @@ class Scenario extends React.Component {
         }
     }
     whereBShouldGo = ()=>{
-        if(!this.state.bLoop){
-            return 'joinWithB'
+        this.getZType()
+        if(this.state.bLoop){
+            return 'isNotDefaultB'
         }else{
-            return 'notDefault'
+            return 'joinWithB'
         }
     }
     whereCShouldGo = ()=>{
-        if(!this.state.cLoop){
-            return 'joinWithC'
+        if(this.state.cLoop){
+            return 'isNotDefaultC'
         }else{
-            return 'notDefault'
+            return 'joinWithC'
         }
     }
     whereDShouldGo = ()=>{
-        if(!this.state.dLoop){
-            return 'joinWithD'
+        if(this.state.dLoop){
+            return 'isNotDefaultD'
         }else{
-            return 'notDefault'
+            return 'joinWithD'
         }
     }
     whichOptionsExist(){

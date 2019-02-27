@@ -80,7 +80,7 @@ class Abcd extends React.Component {
             return (                
                 <div>Loading</div>
             )
-        }else if(this.props.z_type === 'default'){
+        }else if(this.props.z_type === 'default' && this.props[`${this.props.oID}Text`]){
             console.log(`hitting in default ${this.state.oID}`) 
             return (
                 <div>
@@ -89,14 +89,14 @@ class Abcd extends React.Component {
             )
         }else if(this.props.z_type.split(' ')[0] === 'loop'){
             console.log(`hitting in loop ${this.state.oID}`)
-            return (                
+            return (
                 <div>
                     {this.props[`${this.props.oID}Text`]}
                 </div>
             )
         }else{
             return (                
-                <div>Nothing Else Loading</div>
+                <div>Start Over</div>
             )
         }
     }
