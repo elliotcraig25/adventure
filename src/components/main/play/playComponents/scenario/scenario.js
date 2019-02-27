@@ -15,9 +15,12 @@ class Scenario extends React.Component {
             bLoop: null,
             cLoop: null,
             dLoop: null,
+            info: {}
         }
     }
     componentDidMount(){
+        // console.log('hitting in componenet did mount')
+        // this.getZType()
         this.setState({
             id: this.props.id.adventure_id
         });        
@@ -31,32 +34,35 @@ class Scenario extends React.Component {
     }
 
     getZType = ()=>{
-        axios.get(`/api/abcdoption/${this.props.id.adventure_id}/${this.state.zCur}`)
-        .then(res=>{
-            if(res.data.z_type === 'default' && this.state.aLoop){
-                console.log(`in getZType 1`)
-                this.setState({
-                    aLoop: null, 
-                    bLoop: null,
-                    cLoop: null,
-                    dLoop: null
-                })
-            }else if(!res.data.z_type){
-                console.log(`in getZType 2`)
-                this.setState({
-                    zCur: 'z'
-                })
-            }else if(res.data.z_type.split(' ')[0] === 'loop' && !this.state.aLoop){
-                console.log(`in getZType`)
-                if(res.data.z_type.split(' ')[1] !== 'none' && res.data.z_type.split(' ')[1]){
+        if(this.props.id.adventure_id && this.state.zCur){
+            axios.get(`/api/abcdoption/${this.props.id.adventure_id}/${this.state.zCur}`)
+            .then(res=>{
+                // this.setState({info: res.data})
+                if(res.data.z_type === 'default' && this.state.aLoop){
+                    console.log(`in getZType 1`)
                     this.setState({
-                        aLoop: res.data.z_type.split(' ')[1]
+                        aLoop: null, 
+                        bLoop: null,
+                        cLoop: null,
+                        dLoop: null
                     })
+                }else if(!res.data.z_type){
+                    console.log(`in getZType 2`)
+                    this.setState({
+                        zCur: 'z'
+                    })
+                }else if(res.data.z_type.split(' ')[0] === 'loop' && !this.state.aLoop){
+                    console.log(`in getZType`)
+                    if(res.data.z_type.split(' ')[1] !== 'none' && res.data.z_type.split(' ')[1]){
+                        this.setState({
+                            aLoop: res.data.z_type.split(' ')[1]
+                        })
+                    }
+                }else{
+                    // console.log(`please dont loop`)
                 }
-            }else{
-                console.log(`please dont loop`)
-            }
-        })
+            }).catch(err=>console.log(err))
+        }
     }
 
     startOver = ()=>{
@@ -209,7 +215,7 @@ class Scenario extends React.Component {
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.startOver()]} className='options_a'>
+                    <button onClick={this.startOver} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
                     </button>
                 </div>

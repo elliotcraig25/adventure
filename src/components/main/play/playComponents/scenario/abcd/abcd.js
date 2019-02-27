@@ -15,14 +15,20 @@ class Abcd extends React.Component {
     }
     
     // componentDidMount(){
-    //     this.props.updateReduxZABCD()
+    //     this.getNewOptions()
     // }
 
-    componentDidUpdate(props){
-        if(props!==this.props){ 
+    componentDidUpdate(prevProps, prevState){
+        console.log('hitting in abcd componenet did update')
+        if(prevProps!==this.props){ 
+            console.log('inside hitting in abcd componenet did update')
             this.getNewOptions()
             // this.resettingRedux()
         }
+        // if(prevState.zID!==this.state.zID){
+        //     this.getNewOptions()
+        //     // this.resettingRedux()
+        // }
     }
 
     // resettingRedux = ()=>{
@@ -33,15 +39,16 @@ class Abcd extends React.Component {
 
     getNewOptions = ()=>{
         if(this.props.aID && this.props.zID){
-            return(                
+            console.log('does this one here hit??')
+            // return(
                 axios.get(`/api/abcdoption/${this.props.aID}/${this.props.zID}`) 
                 .then((res)=>{                    
-                    // console.log(res.data);
+                    console.log(res.data);
                     this.setState({info: res.data})
                     if(!res.data.z){
                         this.props.updateReduxZ({z: false})
-                    }else{
-                        this.props.updateReduxZ({z: true})
+                    }else{                        
+                        this.props.updateReduxZ({z: true, zText: res.data.z, aText: res.data.a, bText: res.data.b, cText: res.data.c, dText: res.data.d, z_type: res.data.z_type})
                     }
                     if(!res.data.a){
                         this.props.updateReduxA({a: false})
@@ -64,24 +71,27 @@ class Abcd extends React.Component {
                         this.props.updateReduxD({d: true})
                     }
                 }).catch(err=>(console.log(err)))
-            )
+            // )
         }
     }
     whatToRender = ()=>{
-        if(!this.state.info.z_type){
+        if(!this.props.z_type){
+            console.log(`hitting in undefined ${this.state.oID}`) 
             return (                
                 <div>Loading</div>
             )
-        }else if(this.state.info.z_type === 'default'){
+        }else if(this.props.z_type === 'default'){
+            console.log(`hitting in default ${this.state.oID}`) 
             return (
                 <div>
-                    {this.state.info[this.props.oID]} 
+                    {this.props[`${this.props.oID}Text`]}
                 </div>
             )
-        }else if(this.state.info.z_type.split(' ')[0] === 'loop'){
+        }else if(this.props.z_type.split(' ')[0] === 'loop'){
+            console.log(`hitting in loop ${this.state.oID}`)
             return (                
                 <div>
-                    {this.state.info[this.props.oID]}
+                    {this.props[`${this.props.oID}Text`]}
                 </div>
             )
         }else{
@@ -105,7 +115,13 @@ const mapToProps = reduxState => {
         a: reduxState.a,
         b: reduxState.b,
         c: reduxState.c,
-        d: reduxState.d 
+        d: reduxState.d,
+        zText: reduxState.zText,
+        aText: reduxState.aText,
+        bText: reduxState.bText,
+        cText: reduxState.cText,
+        dText: reduxState.dText,
+        z_type: reduxState.z_type
     }
 };
 const dispatch = {

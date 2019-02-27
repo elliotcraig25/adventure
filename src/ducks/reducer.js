@@ -4,10 +4,15 @@ const initialState = {
     profile_pic: '',
     loggedIn: false,
     z: true,
+    zText: '',
     a: true,
+    aText: '',
     b: true,
+    bText: '',
     c: true,
-    d: true
+    cText: '',
+    d: true,
+    dText: ''
 }
 
 const UPDATE_USER = 'UPDATE_USER';
@@ -84,10 +89,10 @@ export default function reducer(
             };
         case UPDATEREDUXZ:
             const {
-                z
+                z, zText, aText, bText, cText, dText, z_type
             } = payload;
             return  {
-                ...state, z
+                ...state, z, zText, aText, bText, cText, dText, z_type
             }
         case UPDATEREDUXA:
             const {
