@@ -11,6 +11,7 @@ class PlayComponents extends React.Component {
         this.state = {
             adventureID: '',
             curZID: 'z',
+            z_type: 'default',
             title: '',
             user: ''
         };
@@ -28,7 +29,7 @@ class PlayComponents extends React.Component {
                 title: res.data.adventure_title,
                 user: res.data.username
             })})
-        }     
+        }
     }
     render(){
         // console.log(this.state.adventureID)

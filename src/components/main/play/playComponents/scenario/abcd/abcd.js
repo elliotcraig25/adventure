@@ -14,17 +14,25 @@ class Abcd extends React.Component {
         }
     }
     
-    componentDidUpdate(props){
-        if(props!==this.props){
-            this.getNewOptions()
-        } 
+    componentDidMount(){
+        this.props.updateReduxZABCD()
     }
-    
+
+    componentDidUpdate(props){
+        if(props!==this.props){ 
+            this.getNewOptions()
+            // this.resettingRedux()
+        }
+    }
+
+    resettingRedux = ()=>{
+        if(!this.props.z || !this.props.a || !this.props.b || !this.props.c || !this.props.d){
+            this.props.updateReduxZABCD()
+        }
+    }
+
     getNewOptions = ()=>{
-        // console.log(`zID:`, this.props.zID)
-        // console.log(`aID:`, this.props.aID)
         if(this.props.aID){
-            // this.props.updateReduxZABCD()
             return(                
                 axios.get(`/api/abcdoption/${this.props.aID}/${this.props.zID}`) 
                 .then((res)=>{                    
@@ -44,7 +52,7 @@ class Abcd extends React.Component {
                     }
                     if(!res.data.d){
                         this.props.updateReduxD({d: false})
-                    } 
+                    }
                 })
             )
         }
@@ -58,12 +66,12 @@ class Abcd extends React.Component {
             )
         }else if(!this.state.info.z_type){
             return (                
-                <div>123123123</div>
+                <div>Loading</div>
             )
         }else{
             return (
                 <div>
-                    It's not default
+                    {this.state.info[this.props.oID]}
                 </div>
             )
         }
@@ -87,11 +95,11 @@ const mapToProps = reduxState => {
     }
 };
 const dispatch = {
-    updateReduxZABCD,
     updateReduxZ,
     updateReduxA,
     updateReduxB,
     updateReduxC,
-    updateReduxD
+    updateReduxD,
+    updateReduxZABCD
 };
 export default connect(mapToProps, dispatch)(Abcd);
