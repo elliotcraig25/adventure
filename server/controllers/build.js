@@ -26,7 +26,8 @@ module.exports = {
         if(prop === 'z'){
             const db = req.app.get('db'); 
             let rowToChangeAID = aID;
-            db.build.editZ([val, prop, rowToChangeAID]); 
+            db.build.editZ([val, prop, rowToChangeAID])
+            .then(response=>res.sendStatus(200)); 
         }else{
             let propSplit = prop.split('');
             let columnToChange = propSplit.pop();
@@ -44,19 +45,24 @@ module.exports = {
             // .catch(console.log(`doesn't exist`))
             if(columnToChange === 'z'){
                 const db = req.app.get('db');
-                db.build.editZ([val, rowToChangeZID, rowToChangeAID]);
+                db.build.editZ([val, rowToChangeZID, rowToChangeAID])
+                .then(response=>res.sendStatus(200));
             }else if(columnToChange === 'a'){
                 const db = req.app.get('db');
-                db.build.editA([val, rowToChangeZID, rowToChangeAID]);
+                db.build.editA([val, rowToChangeZID, rowToChangeAID])
+                .then(response=>res.sendStatus(200));
             }else if(columnToChange === 'b'){
                 const db = req.app.get('db');
-                db.build.editB([val, rowToChangeZID, rowToChangeAID]);
+                db.build.editB([val, rowToChangeZID, rowToChangeAID])
+                .then(response=>res.sendStatus(200));
             }else if(columnToChange === 'c'){
                 const db = req.app.get('db');
-                db.build.editC([val, rowToChangeZID, rowToChangeAID]);
+                db.build.editC([val, rowToChangeZID, rowToChangeAID])
+                .then(response=>res.sendStatus(200));
             }else if(columnToChange === 'd'){
                 const db = req.app.get('db');
-                db.build.editD([val, rowToChangeZID, rowToChangeAID]);
+                db.build.editD([val, rowToChangeZID, rowToChangeAID])
+                .then(response=>res.sendStatus(200));
             }
         }
     },

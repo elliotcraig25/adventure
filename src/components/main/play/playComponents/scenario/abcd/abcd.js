@@ -14,9 +14,9 @@ class Abcd extends React.Component {
         }
     }
     
-    componentDidMount(){
-        this.props.updateReduxZABCD()
-    }
+    // componentDidMount(){
+    //     this.props.updateReduxZABCD()
+    // }
 
     componentDidUpdate(props){
         if(props!==this.props){ 
@@ -25,14 +25,14 @@ class Abcd extends React.Component {
         }
     }
 
-    resettingRedux = ()=>{
-        if(!this.props.z || !this.props.a || !this.props.b || !this.props.c || !this.props.d){
-            this.props.updateReduxZABCD()
-        }
-    }
+    // resettingRedux = ()=>{
+    //     if(!this.props.z || !this.props.a || !this.props.b || !this.props.c || !this.props.d){
+    //         this.props.updateReduxZABCD()
+    //     }
+    // }
 
     getNewOptions = ()=>{
-        if(this.props.aID){
+        if(this.props.aID && this.props.zID){
             return(                
                 axios.get(`/api/abcdoption/${this.props.aID}/${this.props.zID}`) 
                 .then((res)=>{                    
@@ -40,39 +40,53 @@ class Abcd extends React.Component {
                     this.setState({info: res.data})
                     if(!res.data.z){
                         this.props.updateReduxZ({z: false})
+                    }else{
+                        this.props.updateReduxZ({z: true})
                     }
                     if(!res.data.a){
                         this.props.updateReduxA({a: false})
+                    }else{
+                        this.props.updateReduxA({a: true})
                     }
                     if(!res.data.b){
                         this.props.updateReduxB({b: false})
+                    }else{
+                        this.props.updateReduxB({b: true})
                     }
                     if(!res.data.c){
                         this.props.updateReduxC({c: false})
+                    }else{
+                        this.props.updateReduxC({c: true})
                     }
                     if(!res.data.d){
                         this.props.updateReduxD({d: false})
+                    }else{
+                        this.props.updateReduxD({d: true})
                     }
-                })
+                }).catch(err=>(console.log(err)))
             )
         }
     }
     whatToRender = ()=>{
-        if(this.state.info.z_type === 'default'){
+        if(!this.state.info.z_type){
+            return (                
+                <div>Loading</div>
+            )
+        }else if(this.state.info.z_type === 'default'){
             return (
                 <div>
                     {this.state.info[this.props.oID]} 
                 </div>
             )
-        }else if(!this.state.info.z_type){
+        }else if(this.state.info.z_type.split(' ')[0] === 'loop'){
             return (                
-                <div>Loading</div>
-            )
-        }else{
-            return (
                 <div>
                     {this.state.info[this.props.oID]}
                 </div>
+            )
+        }else{
+            return (                
+                <div>Nothing Else Loading</div>
             )
         }
     }

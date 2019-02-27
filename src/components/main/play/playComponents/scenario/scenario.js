@@ -60,37 +60,37 @@ class Scenario extends React.Component {
     }
 
     startOver = ()=>{
-        this.props.updateReduxZABCD()
+        // this.props.updateReduxZABCD()
         this.setState({
             zCur: 'z'
         })
     } 
     joinWithA = ()=>{
-        this.props.updateReduxZABCD()
+        // this.props.updateReduxZABCD()
         this.setState({
             zCur: this.state.zCur + 'a'
         })
     } 
     joinWithB = ()=>{
-        this.props.updateReduxZABCD()
+        // this.props.updateReduxZABCD()
         this.setState({
             zCur: this.state.zCur + 'b'
         })
     } 
     joinWithC = ()=>{
-        this.props.updateReduxZABCD()
+        // this.props.updateReduxZABCD()
         this.setState({
             zCur: this.state.zCur + 'c'
         })
     } 
     joinWithD = ()=>{
-        this.props.updateReduxZABCD()
+        // this.props.updateReduxZABCD()
         this.setState({
             zCur: this.state.zCur + 'd'
         })
     }
     isNotDefaultA = ()=>{
-        this.props.updateReduxZABCD()
+        // this.props.updateReduxZABCD()
         console.log(`in isNotDefaultA`)
         if(this.state.aLoop !== this.state.zCur){
             console.log(`hitting in first`)
