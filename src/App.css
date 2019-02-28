@@ -19,6 +19,19 @@
   color: white;
 }
 
+@media only screen and (max-width: 480px) {
+  .side {        
+      display: none; 
+  }
+  .links {
+    display: none;
+  }
+  .head-side-main {
+      grid-template-columns: 0px 0px 0px 0px 1fr 0px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 1fr;
+      grid-template-rows: 0px 0px 0px 0px 9px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 1fr 1fr 1fr 1fr 36px 36px 18px 18px;
+  }
+}
+
 .App-link {
   color: #61dafb;
 }
