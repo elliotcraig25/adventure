@@ -1,4 +1,4 @@
-require('dotenv').config({ path: __dirname + '/.env' });
+require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const sessions = require('express-session');
@@ -23,7 +23,7 @@ app.use(sessions({
     maxAge: null 
 }));
 
-massive(DB_CONNECTION, { scripts: __dirname + '/db' }).then(db => {
+massive(DB_CONNECTION).then(db => {
     app.set('db', db);
     app.listen(SERVER_PORT, ()=>{
         console.log(
