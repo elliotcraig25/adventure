@@ -23,7 +23,7 @@ class CatgoryContainer extends React.Component {
             <div className='category_container'>
                 <div className='category_child'>
                     <div className='category_title'>
-                        {this.props.thumbNailInfo[0].category_title}<br/>
+                        {this.props.thumbNailInfo[0].category_title.toUpperCase()}<br/>
                     </div>
                     <div className='thumbnail_container'>
                         {this.createThumbnail()}

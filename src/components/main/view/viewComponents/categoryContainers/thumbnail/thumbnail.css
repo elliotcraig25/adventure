@@ -8,12 +8,15 @@
     align-items: center;
     justify-content: space-evenly;
     border-radius: 3px;
+    color: black;
 }
 
 .thumbnail_title {
     text-align: center; 
+    font-size: 20px;
 }
 
 .thumbnail_user_name {
     text-align: center; 
+    font-size: 12px;
 }

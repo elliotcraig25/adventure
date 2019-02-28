@@ -92,7 +92,7 @@ class UserComponent extends React.Component {
                 <div className='profile_pic_boarder_bottom'></div>
                 <div className='user_boarder_bottom'></div>
                 <div className='profile_pic'>
-                    profile pic
+                    ...
                 </div>
                 <div className='name_place'>Guest</div>
                 <div className='loggin_register_one'>
@@ -147,7 +147,7 @@ class UserComponent extends React.Component {
                 <div className='registering_border_top'></div>
                 <div className='registering_border_bottom'></div>
                 <div className='profile_pic_two'>
-                    Drag
+                    ...
                 </div>
                 <input 
                     className='registering_input_one'
@@ -200,7 +200,7 @@ class UserComponent extends React.Component {
                 <div className='profile_pic_boarder_bottom'></div>
                 <div className='user_boarder_bottom'></div>
                 <div className='profile_pic'>
-                    profile pic
+                    ...
                 </div>
                 <div className='name_place'>{this.props.username}</div>
                 <div className='loggin_register_one'>

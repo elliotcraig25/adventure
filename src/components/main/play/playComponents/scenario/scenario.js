@@ -56,7 +56,7 @@ class Scenario extends React.Component {
                 //     this.setState({
                 //         zCur: 'z'
                 //     }) 
-                }else if(res.data.z_type.split(' ')[0] === 'loop' && !this.state.aLoop){
+                }else if(res.data.z_type && res.data.z_type.split(' ')[0] === 'loop' && !this.state.aLoop){
                     // console.log(`in getZType`)
                     if(res.data.z_type.split(' ')[1] !== 'none' && res.data.z_type.split(' ')[1]){
                         this.setState({
@@ -209,18 +209,18 @@ class Scenario extends React.Component {
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
+                    <div onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
-                    </button>
-                    <button onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
+                    </div>
+                    <div onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
-                    </button>
-                    <button onClick={this[this.whereThisShouldGo('C')]} className='options_c'>
+                    </div>
+                    <div onClick={this[this.whereThisShouldGo('C')]} className='options_c'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'c'}/>
-                    </button>
-                    <button onClick={this[this.whereThisShouldGo('D')]} className='options_d'>
+                    </div>
+                    <div onClick={this[this.whereThisShouldGo('D')]} className='options_d'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'d'}/>
-                    </button>                
+                    </div>
                 </div>
             )
         }else if(this.props.z && this.props.a && this.props.b && this.props.c && !this.props.d){
@@ -230,15 +230,15 @@ class Scenario extends React.Component {
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
+                    <div onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
-                    </button>
-                    <button onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
+                    </div>
+                    <div onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
-                    </button>
-                    <button onClick={this[this.whereThisShouldGo('C')]} className='options_c'>
+                    </div>
+                    <div onClick={this[this.whereThisShouldGo('C')]} className='options_c'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'c'}/>
-                    </button>
+                    </div>
                 </div>
             )
         }else if(this.props.z && this.props.a && this.props.b && !this.props.c && !this.props.d){
@@ -248,12 +248,12 @@ class Scenario extends React.Component {
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
+                    <div onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
-                    </button>
-                    <button onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
+                    </div>
+                    <div onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
-                    </button> 
+                    </div> 
                 </div>
             )
         }else if(this.props.z && this.props.a && !this.props.b && !this.props.c && !this.props.d){
@@ -263,9 +263,9 @@ class Scenario extends React.Component {
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.whereThisShouldGo('B')]} className='options_a'>
+                    <div onClick={this[this.whereThisShouldGo('B')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
-                    </button>
+                    </div>
                 </div>
             )
         }else if(this.props.z && !this.props.a && !this.props.b && !this.props.c && !this.props.d){
@@ -275,9 +275,9 @@ class Scenario extends React.Component {
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this['startOver']} className='options_a'>
+                    <div onClick={this['startOver']} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
-                    </button>
+                    </div>
                 </div>
             ) 
         }else{
@@ -287,9 +287,9 @@ class Scenario extends React.Component {
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this['startOver']} className='options_a'>
+                    <div onClick={this['startOver']} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
-                    </button>
+                    </div>
                 </div>
             )
         }

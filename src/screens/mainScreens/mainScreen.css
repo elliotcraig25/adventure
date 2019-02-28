@@ -44,6 +44,7 @@
     grid-column-end: 25;
     grid-row-start: 6;
     grid-row-end: 26;
+    font-family: Arial, Helvetica, sans-serif;    
 }
 
 .main_play {
@@ -54,6 +55,8 @@
     grid-row-end: 25;
     width: 100%;
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 9px;
 }
 
 .main_play_two {
@@ -62,11 +65,11 @@
     height: 100%;
     display: grid;
     grid-template-columns: 18px 29fr 30fr 18px 16fr 18px;
-    grid-template-rows: 18px 4fr 18px 30fr 18px;
+    grid-template-rows: 18px 4fr 18px 30fr 18px;    
 }
 
 .title_and_name {
-    background-color: yellow;
+    /* background-color: yellow; */
     grid-column-start: 2;
     grid-column-end: 6;
     grid-row-start: 2;

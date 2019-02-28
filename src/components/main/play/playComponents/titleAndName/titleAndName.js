@@ -5,11 +5,11 @@ const TitleAndName = (props)=>{
     // console.log(title)
     return (
         <div className='title_and_name'>
-            <div>
+            <div className='title_and_name_title'>
                 {props.title} 
             </div>
-            <div>
-                {props.user} 
+            <div className='title_and_name_name'>
+                Created by {props.user} 
             </div>
         </div>
     )

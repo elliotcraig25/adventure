@@ -11,10 +11,10 @@ class NavGraphic extends React.Component {
         };
     };
     render(){
-        return (
+        return ( 
             <div className='navGraphic'>
                 <div className='box'>
-                    little box
+                
                 </div>
                 <div className='links'>
                     <Link to='/'>
