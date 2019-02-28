@@ -37,7 +37,7 @@ class Scenario extends React.Component {
 
     getZType = ()=>{
         if(this.props.id.adventure_id && this.state.zCur){
-            console.log(`get Z Type is running`)
+            console.log(`get Z Type is running`, this.state.zCur)
             axios.get(`/api/abcdoption/${this.props.id.adventure_id}/${this.state.zCur}`)
             .then(res=>{
                 // this.setState({info: res.data})
@@ -193,7 +193,7 @@ class Scenario extends React.Component {
     }
     whereThisShouldGo = (choice) => {
         this.getZType();
-        if (this.state[choice.toLowerCase() + 'Loop']) {
+        if (this.state[choice.toLowerCase() + 'Loop']){
             return 'isNotDefault' + choice;
         }
         return 'joinWith' + choice;

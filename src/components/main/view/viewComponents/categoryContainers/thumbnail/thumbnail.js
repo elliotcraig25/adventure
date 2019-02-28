@@ -14,10 +14,10 @@ class Thumbnail extends React.Component {
         return (
             <Link to={`/play/${this.props.thumbnail.adventure_id}`}>
                 <div key={this.props.thumbnail.adventure_id} className='thumbnail'>
-                    <div>
+                    <div className='thumbnail_title'>
                         {this.props.thumbnail.adventure_title}
                     </div>
-                    <div>
+                    <div className='thumbnail_user_name'>
                         {this.props.thumbnail.username}
                     </div>
                 </div> 
