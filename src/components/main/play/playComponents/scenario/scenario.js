@@ -26,9 +26,11 @@ class Scenario extends React.Component {
         });        
     }
 
-    componentDidUpdate(props){
-        if(props!==this.props){
-            console.log('hitting in componenet did update')
+    componentDidUpdate(prevProps){
+        if(prevProps!==this.props){
+            console.log('scenario: in componenet did update')
+            console.log('scenario prevProps:', prevProps)
+            console.log('scenario this.props:', this.props)
             this.getZType()
         } 
     }
@@ -39,7 +41,7 @@ class Scenario extends React.Component {
             .then(res=>{
                 // this.setState({info: res.data})
                 if(res.data.z_type === 'default' && this.state.aLoop){
-                    console.log(`in getZType 1`)
+                    // console.log(`in getZType 1`)
                     this.setState({
                         aLoop: null, 
                         bLoop: null,
@@ -47,12 +49,12 @@ class Scenario extends React.Component {
                         dLoop: null
                     })
                 }else if(!res.data.z_type){
-                    console.log(`in getZType 2`)
+                    // console.log(`in getZType 2`)
                     this.setState({
                         zCur: 'z'
                     })
                 }else if(res.data.z_type.split(' ')[0] === 'loop' && !this.state.aLoop){
-                    console.log(`in getZType`)
+                    // console.log(`in getZType`)
                     if(res.data.z_type.split(' ')[1] !== 'none' && res.data.z_type.split(' ')[1]){
                         this.setState({
                             aLoop: res.data.z_type.split(' ')[1]
@@ -112,14 +114,14 @@ class Scenario extends React.Component {
     }
     isNotDefaultA = ()=>{
         // this.props.updateReduxZABCD()
-        console.log(`in isNotDefaultA`)
+        // console.log(`in isNotDefaultA`)
         if(this.state.aLoop !== this.state.zCur){
-            console.log(`hitting in first`)
+            // console.log(`hitting in first`)
             this.setState({
                 zCur: this.state.aLoop
             })
         }else{
-            console.log(`hitting in second`)
+            // console.log(`hitting in second`)
             this.setState({
                 zCur: this.state.zCur,
                 aLoop: null,
@@ -131,14 +133,14 @@ class Scenario extends React.Component {
     }
     isNotDefaultB = ()=>{
         // this.props.updateReduxZABCD()
-        console.log(`in isNotDefaultB`)
+        // console.log(`in isNotDefaultB`)
         if(this.state.bLoop !== this.state.zCur){
-            console.log(`hitting in first`)
+            // console.log(`hitting in first`)
             this.setState({
                 zCur: this.state.bLoop
             })
         }else{
-            console.log(`hitting in second`)
+            // console.log(`hitting in second`)
             this.setState({
                 zCur: this.state.zCur,
                 aLoop: null,
@@ -150,14 +152,14 @@ class Scenario extends React.Component {
     }
     isNotDefaultC = ()=>{
         // this.props.updateReduxZABCD()
-        console.log(`in isNotDefaultC`)
+        // console.log(`in isNotDefaultC`)
         if(this.state.cLoop !== this.state.zCur){
-            console.log(`hitting in first`)
+            // console.log(`hitting in first`)
             this.setState({
                 zCur: this.state.cLoop
             })
         }else{
-            console.log(`hitting in second`)
+            // console.log(`hitting in second`)
             this.setState({
                 zCur: this.state.zCur,
                 aLoop: null,
@@ -169,14 +171,14 @@ class Scenario extends React.Component {
     }
     isNotDefaultD = ()=>{
         // this.props.updateReduxZABCD()
-        console.log(`in isNotDefaultD`)
+        // console.log(`in isNotDefaultD`)
         if(this.state.dLoop !== this.state.zCur){
-            console.log(`hitting in first`)
+            // console.log(`hitting in first`)
             this.setState({
                 zCur: this.state.dLoop
             })
         }else{
-            console.log(`hitting in second`)
+            // console.log(`hitting in second`)
             this.setState({
                 zCur: this.state.zCur,
                 aLoop: null,
@@ -308,30 +310,12 @@ class Scenario extends React.Component {
     }
     render(){
         // console.log(this.props.id.adventure_id)
-        console.log(this.state.aLoop) 
-        console.log(this.state.zCur)        
-        return (            
+        // console.log(this.state.aLoop) 
+        // console.log(this.state.zCur)
+        console.log(`scenario rendering`)
+        return (
             this.whichOptionsExist()
         )
-        // return (
-        //     <div className='scenario_and_options'>
-        //         <div className='the_scenario'>
-        //             <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
-        //         </div>
-        //         <button onClick={this.joinWithA} className='options_a'>
-        //             <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
-        //         </button>
-        //         <button onClick={this.joinWithB} className='options_b'>
-        //             <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
-        //         </button>
-        //         <button onClick={this.joinWithC} className='options_c'>
-        //             <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'c'}/>
-        //         </button>
-        //         <button onClick={this.joinWithD} className='options_d'>
-        //             <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'d'}/>
-        //         </button>                
-        //     </div>
-        // )
     }
 }
 const mapToProps = reduxState => {

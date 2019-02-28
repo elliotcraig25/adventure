@@ -13,82 +13,61 @@ class Abcd extends React.Component {
             info: {}
         }
     }
-    
-    // componentDidMount(){
-    //     this.getNewOptions()
-    // }
 
-    componentDidUpdate(prevProps, prevState){
-        console.log('hitting in abcd componenet did update')
+    componentDidUpdate(prevProps, prevState){        
         if(prevProps!==this.props){ 
-            console.log('inside hitting in abcd componenet did update')
+            console.log('abcd: in componenet did update')
+            console.log('abcd prevProps', prevProps)
+            console.log('abcd this.props', this.props)
             this.getNewOptions()
-            // this.resettingRedux()
         }
-        // if(prevState.zID!==this.state.zID){
-        //     this.getNewOptions()
-        //     // this.resettingRedux()
-        // }
     }
-
-    // resettingRedux = ()=>{
-    //     if(!this.props.z || !this.props.a || !this.props.b || !this.props.c || !this.props.d){
-    //         this.props.updateReduxZABCD()
-    //     }
-    // }
 
     getNewOptions = ()=>{
         if(this.props.aID && this.props.zID){
-            console.log('does this one here hit??')
-            // return(
-                axios.get(`/api/abcdoption/${this.props.aID}/${this.props.zID}`) 
-                .then((res)=>{                    
-                    console.log(res.data);
-                    this.setState({info: res.data})
-                    if(!res.data.z){
-                        this.props.updateReduxZ({z: false})
-                    }else{                        
-                        this.props.updateReduxZ({z: true, zText: res.data.z, aText: res.data.a, bText: res.data.b, cText: res.data.c, dText: res.data.d, z_type: res.data.z_type})
-                    }
-                    if(!res.data.a){
-                        this.props.updateReduxA({a: false})
-                    }else{
-                        this.props.updateReduxA({a: true})
-                    }
-                    if(!res.data.b){
-                        this.props.updateReduxB({b: false})
-                    }else{
-                        this.props.updateReduxB({b: true})
-                    }
-                    if(!res.data.c){
-                        this.props.updateReduxC({c: false})
-                    }else{
-                        this.props.updateReduxC({c: true})
-                    }
-                    if(!res.data.d){
-                        this.props.updateReduxD({d: false})
-                    }else{
-                        this.props.updateReduxD({d: true})
-                    }
-                }).catch(err=>(console.log(err)))
-            // )
+            axios.get(`/api/abcdoption/${this.props.aID}/${this.props.zID}`) 
+            .then((res)=>{
+                this.setState({info: res.data})
+                if(!res.data.z){
+                    this.props.updateReduxZ({z: false})
+                }else{
+                    this.props.updateReduxZ({z: true, zText: res.data.z, aText: res.data.a, bText: res.data.b, cText: res.data.c, dText: res.data.d, z_type: res.data.z_type})
+                }
+                if(!res.data.a){
+                    this.props.updateReduxA({a: false})
+                }else{
+                    this.props.updateReduxA({a: true})
+                }
+                if(!res.data.b){
+                    this.props.updateReduxB({b: false})
+                }else{
+                    this.props.updateReduxB({b: true})
+                }
+                if(!res.data.c){
+                    this.props.updateReduxC({c: false})
+                }else{
+                    this.props.updateReduxC({c: true})
+                }
+                if(!res.data.d){
+                    this.props.updateReduxD({d: false})
+                }else{
+                    this.props.updateReduxD({d: true})
+                }
+            }).catch(err=>(console.log(err)))
         }
     }
     whatToRender = ()=>{
         if(!this.props.z_type){
-            console.log(`hitting in undefined ${this.state.oID}`) 
             return (                
                 <div>Loading</div>
             )
         }else if(this.props.z_type === 'default' && this.props[`${this.props.oID}Text`]){
-            console.log(`hitting in default ${this.state.oID}`) 
             return (
                 <div>
                     {this.props[`${this.props.oID}Text`]}
                 </div>
             )
         }else if(this.props.z_type.split(' ')[0] === 'loop'){
-            console.log(`hitting in loop ${this.state.oID}`)
             return (
                 <div>
                     {this.props[`${this.props.oID}Text`]}
@@ -101,7 +80,7 @@ class Abcd extends React.Component {
         }
     }
     render(){
-        // console.log(this.state.info)
+        console.log(`abcd rendering`)
         return (
             <div>
                 {this.whatToRender()}
