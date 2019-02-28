@@ -9,22 +9,27 @@ class Abcd extends React.Component {
         this.state = {
             zID: this.props.zID,
             oID: this.props.oID,
-            aID: this.props.aID,
-            info: {}
+            aID: 0,
+            info: {} 
         }
+    }
+
+    componentDidMount(){
+        this.setState({aID: this.props.aID})
     }
 
     componentDidUpdate(prevProps, prevState){        
         if(prevProps!==this.props){ 
             console.log('abcd: in componenet did update')
-            console.log('abcd prevProps', prevProps)
-            console.log('abcd this.props', this.props)
+            // console.log('abcd prevProps', prevProps)
+            // console.log('abcd this.props', this.props)
             this.getNewOptions()
         }
     }
 
     getNewOptions = ()=>{
-        if(this.props.aID && this.props.zID){
+        if(this.props.aID && this.props.zID && this.props.oID === 'z'){
+            console.log(`${this.props.oID}: get new options is running`) 
             axios.get(`/api/abcdoption/${this.props.aID}/${this.props.zID}`) 
             .then((res)=>{
                 this.setState({info: res.data})

@@ -29,30 +29,33 @@ class Scenario extends React.Component {
     componentDidUpdate(prevProps){
         if(prevProps!==this.props){
             console.log('scenario: in componenet did update')
-            console.log('scenario prevProps:', prevProps)
-            console.log('scenario this.props:', this.props)
+            // console.log('scenario prevProps:', prevProps)
+            // console.log('scenario this.props:', this.props)
             this.getZType()
         } 
     }
 
     getZType = ()=>{
         if(this.props.id.adventure_id && this.state.zCur){
+            console.log(`get Z Type is running`)
             axios.get(`/api/abcdoption/${this.props.id.adventure_id}/${this.state.zCur}`)
             .then(res=>{
                 // this.setState({info: res.data})
-                if(res.data.z_type === 'default' && this.state.aLoop){
+                if(res.data.z_type === 'default'){
                     // console.log(`in getZType 1`)
-                    this.setState({
-                        aLoop: null, 
-                        bLoop: null,
-                        cLoop: null,
-                        dLoop: null
-                    })
-                }else if(!res.data.z_type){
-                    // console.log(`in getZType 2`)
-                    this.setState({
-                        zCur: 'z'
-                    })
+                    if(this.state.cLoop){
+                        this.setState({
+                            aLoop: null, 
+                            bLoop: null,
+                            cLoop: null,
+                            dLoop: null
+                        })
+                    }
+                // }else if(!res.data.z_type){
+                //     // console.log(`in getZType 2`)
+                //     this.setState({
+                //         zCur: 'z'
+                //     }) 
                 }else if(res.data.z_type.split(' ')[0] === 'loop' && !this.state.aLoop){
                     // console.log(`in getZType`)
                     if(res.data.z_type.split(' ')[1] !== 'none' && res.data.z_type.split(' ')[1]){
@@ -184,124 +187,107 @@ class Scenario extends React.Component {
                 aLoop: null,
                 bLoop: null,
                 cLoop: null,
-                dLoop: null,
+                dLoop: null, 
             }) 
         } 
     }
-    whereAShouldGo = ()=>{
-        this.getZType()
-        if(this.state.aLoop){
-            return 'isNotDefaultA'
-        }else{
-            return 'joinWithA'
+    whereThisShouldGo = (choice) => {
+        this.getZType();
+        if (this.state[choice.toLowerCase() + 'Loop']) {
+            return 'isNotDefault' + choice;
         }
-    }
-    whereBShouldGo = ()=>{
-        this.getZType()
-        if(this.state.bLoop){
-            return 'isNotDefaultB'
-        }else{
-            return 'joinWithB'
-        }
-    }
-    whereCShouldGo = ()=>{
-        if(this.state.cLoop){
-            return 'isNotDefaultC'
-        }else{
-            return 'joinWithC'
-        }
-    }
-    whereDShouldGo = ()=>{
-        if(this.state.dLoop){
-            return 'isNotDefaultD'
-        }else{
-            return 'joinWithD'
-        }
-    }
+        return 'joinWith' + choice;
+    };
+    // shouldComponentUpdate() {
+    //     return false;
+    // }
     whichOptionsExist(){
-        if(
-            this.props.z 
-            && this.props.a && this.props.b && this.props.c && this.props.d
-            ){
+        if(this.props.z && this.props.a && this.props.b && this.props.c && this.props.d){
+            console.log(`which exist all defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.whereAShouldGo()]} className='options_a'>
+                    <button onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
                     </button>
-                    <button onClick={this[this.whereBShouldGo()]} className='options_b'>
+                    <button onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
                     </button>
-                    <button onClick={this[this.whereCShouldGo()]} className='options_c'>
+                    <button onClick={this[this.whereThisShouldGo('C')]} className='options_c'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'c'}/>
                     </button>
-                    <button onClick={this[this.whereDShouldGo()]} className='options_d'>
+                    <button onClick={this[this.whereThisShouldGo('D')]} className='options_d'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'d'}/>
                     </button>                
                 </div>
             )
         }else if(this.props.z && this.props.a && this.props.b && this.props.c && !this.props.d){
+            console.log(`which exist Z A B and C defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.whereAShouldGo()]} className='options_a'>
+                    <button onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
                     </button>
-                    <button onClick={this[this.whereBShouldGo()]} className='options_b'>
+                    <button onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
                     </button>
-                    <button onClick={this[this.whereCShouldGo()]} className='options_c'>
+                    <button onClick={this[this.whereThisShouldGo('C')]} className='options_c'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'c'}/>
                     </button>
                 </div>
             )
         }else if(this.props.z && this.props.a && this.props.b && !this.props.c && !this.props.d){
+            console.log(`which exist Z A and B defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.whereAShouldGo()]} className='options_a'>
+                    <button onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
                     </button>
-                    <button onClick={this[this.whereBShouldGo()]} className='options_b'>
+                    <button onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
                     </button> 
                 </div>
             )
         }else if(this.props.z && this.props.a && !this.props.b && !this.props.c && !this.props.d){
+            console.log(`which exist Z and A defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this[this.whereAShouldGo()]} className='options_a'>
+                    <button onClick={this[this.whereThisShouldGo('B')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
                     </button>
                 </div>
             )
         }else if(this.props.z && !this.props.a && !this.props.b && !this.props.c && !this.props.d){
+            console.log(`which exist Z defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this.startOver} className='options_a'>
+                    <button onClick={this['startOver']} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
                     </button>
                 </div>
             ) 
         }else{
+            console.log(`which exist not defined`) 
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <button onClick={this.startOver} className='options_a'>
+                    <button onClick={this['startOver']} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
                     </button>
                 </div>
