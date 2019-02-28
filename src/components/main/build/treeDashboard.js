@@ -11,7 +11,9 @@ class TreeDashboard extends React.Component {
     render(){
         return (
             <div className='tree_dashboard_container'>
-                TreeDashboard
+                <div className='tree_dashboard_stuff'>                    
+                    TreeDashboard
+                </div>
             </div>
         )
     }
