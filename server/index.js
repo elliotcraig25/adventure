@@ -1,3 +1,4 @@
+const path = require('path');
 require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
@@ -13,6 +14,8 @@ const {
 } = process.env;
 
 const app = express();
+
+app.use( express.static( `${__dirname}/../build` ) );
 
 app.use(express.json());
 
@@ -61,3 +64,7 @@ app.post(`/api/create_new_row`, buildCtrl.createNewRow);
 app.post(`/api/add_title`, buildCtrl.addTitle);
 
 app.post(`/api/changetypeloop`, buildCtrl.changeType);
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
