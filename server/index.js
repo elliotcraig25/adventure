@@ -67,6 +67,7 @@ app.post(`/api/add_title`, buildCtrl.addTitle);
 
 app.post(`/api/changetypeloop`, buildCtrl.changeType);
 
+app.delete(`/api/deletebranch/:aid/:zid`, buildCtrl.deleteBranch);
 
 
 app.get('*', (req, res)=>{

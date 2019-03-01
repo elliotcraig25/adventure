@@ -110,5 +110,13 @@ module.exports = {
             res.sendStatus(500)
             console.log(err)
         })
+    },
+    deleteBranch: (req, res)=>{
+        const {aid, zid} = req.params;
+        const db = req.app.get('db');
+        db.build.deleteBranch([aid, zid])
+        .then(
+            ()=>{res.sendStatus(200)}
+        ).catch((err)=>console.log(err))
     }
 }

@@ -25,7 +25,7 @@ class SelectedDashboard extends React.Component {
     addLoopToDB = ()=>{
         let loopInfo = this.loopTypeToSendToDataBase()
         const {selectedBranch, aID} = this.props
-        axios.post(`/api/changetypeloop`, {loopInfo, selectedBranch, aID})
+        axios.post(`/api/changetypeloop`, {loopInfo, selectedBranch, aID}) 
         .then(res=>{
             this.setState({
                 whereALoopsTo: 'none',
@@ -35,6 +35,13 @@ class SelectedDashboard extends React.Component {
             })
             res.sendStatus(200)
         }).catch(err=>console.log(err))
+    }
+    deleteSelectedBranchFromDataBase = ()=>{
+        if(this.props.selectedBranch){
+            axios.delete(`/api/deletebranch/${this.props.aID}/${this.props.selectedBranch}`)
+            .then((res)=>console.log(res))
+            .catch((err)=>{console.log(err)})
+        }
     }
     render(){
         console.log(this.loopTypeToSendToDataBase())
@@ -76,6 +83,7 @@ class SelectedDashboard extends React.Component {
                             <div></div>
                         )
                     }
+                    <button onClick={this.deleteSelectedBranchFromDataBase}>delete</button>
                 </div>
             </div>
         )

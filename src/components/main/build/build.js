@@ -34,22 +34,26 @@ class BuildComponents extends React.Component {
             })
         }
     }
-    setSelectedA = ()=>{
-        let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'a'
-        this.setState({selectedZID: newSelectedZID})
+    setSelectedFromABCD = (ABCD)=>{
+        let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + ABCD
+        return ()=>{this.setState({selectedZID: newSelectedZID})}
     }
-    setSelectedB = ()=>{
-        let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'b'
-        this.setState({selectedZID: newSelectedZID})
-    }
-    setSelectedC = ()=>{
-        let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'c'
-        this.setState({selectedZID: newSelectedZID}) 
-    }
-    setSelectedD = ()=>{
-        let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'd'
-        this.setState({selectedZID: newSelectedZID})
-    }
+    // setSelectedA = ()=>{
+    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'a'
+    //     this.setState({selectedZID: newSelectedZID})
+    // }
+    // setSelectedB = ()=>{
+    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'b'
+    //     this.setState({selectedZID: newSelectedZID})
+    // }
+    // setSelectedC = ()=>{
+    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'c'
+    //     this.setState({selectedZID: newSelectedZID}) 
+    // }
+    // setSelectedD = ()=>{
+    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'd'
+    //     this.setState({selectedZID: newSelectedZID})
+    // }
     setSelectedAFromNext = ()=>{
         let newSelectedZID = this.state.selectedZID.slice(0) + 'a'
         this.setState({selectedZID: newSelectedZID})
@@ -452,19 +456,19 @@ class BuildComponents extends React.Component {
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_b`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedB}>B</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('b')}>B</button>
                     </div>
                     <div className='a_item_ac'>
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_c`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedC}>C</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('c')}>C</button>
                     </div>
                     <div className='a_item_ad'>
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_d`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedD}>D</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('d')}>D</button>
                     </div>
                 </div>
             )
@@ -475,7 +479,7 @@ class BuildComponents extends React.Component {
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_a`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedA}>A</button> 
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('a')}>A</button>
                     </div>
                     <div className='b_item_ab'>
                         <div className='a_item_aa_id'>ID: {this.state.selectedZID}</div>
@@ -524,13 +528,13 @@ class BuildComponents extends React.Component {
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_c`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedC}>C</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('c')}>C</button>
                     </div>
                     <div className='b_item_ad'>
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_d`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedD}>D</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('d')}>D</button>
                     </div>
                 </div>
             )
@@ -541,13 +545,13 @@ class BuildComponents extends React.Component {
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_a`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedA}>A</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('a')}>A</button>
                     </div>
                     <div className='c_item_ab'>
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_b`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedB}>B</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('b')}>B</button>
                     </div>
                     <div className='c_item_ac'>
                         <div className='a_item_aa_id'>ID: {this.state.selectedZID}</div>
@@ -597,7 +601,7 @@ class BuildComponents extends React.Component {
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_d`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedD}>D</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('d')}>D</button>
                     </div>
                 </div>
             )
@@ -608,19 +612,19 @@ class BuildComponents extends React.Component {
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_a`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedA}>A</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('a')}>A</button>
                     </div>
                     <div className='d_item_ab'>
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_b`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedB}>B</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('b')}>B</button>
                     </div>
                     <div className='d_item_ac'>
                         <div className='a_item_ab_text_not_selected'>
                             {this.state[`${backOne}_c`]}
                         </div>
-                        <button className='a_item_ab_select_button' onClick={this.setSelectedC}>C</button>
+                        <button className='a_item_ab_select_button' onClick={this.setSelectedFromABCD('c')}>C</button>
                     </div>
                     <div className='d_item_ad'>
                         <div className='a_item_aa_id'>ID: {this.state.selectedZID}</div>
