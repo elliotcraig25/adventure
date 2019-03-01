@@ -263,7 +263,7 @@ class Scenario extends React.Component {
                     <div className='the_scenario'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
                     </div>
-                    <div onClick={this[this.whereThisShouldGo('B')]} className='options_a'>
+                    <div onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
                         <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
                     </div>
                 </div>

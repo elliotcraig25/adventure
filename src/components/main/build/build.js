@@ -107,7 +107,7 @@ class BuildComponents extends React.Component {
     addOrUpdate(prop, val){
         let movingTo = this.state.selectedZID        
         const aID = this.state.adventure_id;
-        axios.post(`/api/does_z_id_exist`, {movingTo, aID})
+        axios.post(`/api/does_z_id_exist`, {movingTo, aID}) 
         .then(response=>{
             // console.log(response.data[0])
             if(response.data[0]){
