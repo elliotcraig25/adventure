@@ -2,36 +2,6 @@
     opacity: 0.5;
 } */
 
-@media only screen and (min-width: 1528px) {
-    .head-side-main {
-        grid-template-columns: 18px 54px 72px 36px 1fr 36px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 1fr;
-    }
-  }
-
-@media only screen and (max-width: 1528px) {
-    .head-side-main {
-        grid-template-columns: 18px 54px 72px 36px 1fr 36px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 54px 1fr;
-    }
-  }
-
-@media only screen and (max-width: 480px) {
-    .side {        
-        display: none; 
-    }
-    .sidebar {
-        display: none;
-    }
-    .user_component_child {
-        display: none;
-    }
-    .profile_pic {
-        display: none;
-    }
-    .head-side-main {
-        grid-template-columns: 0px 0px 0px 0px 1fr 0px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 1fr;
-    }
-  }
-
 .head-side-main {
     background-image: url(../../assets/grid___png_file_transparent__by_alexandoria_d4ym86u-fullview.png);
     background-repeat: repeat-y repeat-x;
