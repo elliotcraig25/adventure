@@ -55,6 +55,8 @@ app.get('/api/user', userCtrl.getUser);
 
 app.post(`/api/buildinfotodatabase`, buildCtrl.infoToDatabase);
 
+app.put(`/api/buildinfotodatabase`, buildCtrl.infoToDatabase);
+
 app.post(`/api/createadventure`, buildCtrl.createAdventure);
 
 app.post(`/api/does_z_id_exist`, buildCtrl.doesZIDExist);
@@ -64,6 +66,8 @@ app.post(`/api/create_new_row`, buildCtrl.createNewRow);
 app.post(`/api/add_title`, buildCtrl.addTitle);
 
 app.post(`/api/changetypeloop`, buildCtrl.changeType);
+
+
 
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));
