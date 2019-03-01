@@ -14,6 +14,7 @@ class BuildComponents extends React.Component {
             adventure_id: 0,
         };
     };
+
     componentDidMount(){
         // console.log(this.props.user_id)
         let userMakingTheAdventure = this.props.user_id
@@ -23,6 +24,7 @@ class BuildComponents extends React.Component {
             this.setState({adventure_id: res.data.adventure_id}) 
         })
     }
+
     changeSelectedZIDType = ()=>{
         if(!this.state[`${this.state.selectedZID}Type`] || this.state[`${this.state.selectedZID}Type`] === 'default'){
             this.setState({
@@ -34,88 +36,55 @@ class BuildComponents extends React.Component {
             })
         }
     }
+
+    // This removes one letter and then adds 'a' 'b' 'c' or 'd' to the end of selectedZID in state when the A B C or D button is pressed in the column B
     setSelectedFromABCD = (ABCD)=>{
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + ABCD
         return ()=>{this.setState({selectedZID: newSelectedZID})}
     }
-    // setSelectedA = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'a'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
-    // setSelectedB = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'b'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
-    // setSelectedC = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'c'
-    //     this.setState({selectedZID: newSelectedZID}) 
-    // }
-    // setSelectedD = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1) + 'd'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
+
+    // This adds 'a' 'b' 'c' or 'd' to the end of selectedZID in state when the Next button is pressed in column C
     setSelectedABCDFromNext = (ABCD)=>{
         let newSelectedZID = this.state.selectedZID.slice(0) + ABCD
         return ()=>this.setState({selectedZID: newSelectedZID})
     }
-    // setSelectedAFromNext = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0) + 'a'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
-    // setSelectedBFromNext = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0) + 'b'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
-    // setSelectedCFromNext = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0) + 'c'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
-    // setSelectedDFromNext = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0) + 'd'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
+
+    // This revmoves two letters and then adds 'a' 'b' 'c' or 'd' to the end of selectedZID in state when Back button is pressed in column A
     setSelectedABCDFromPrev = (ABCD)=>{
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + ABCD
         return ()=>this.setState({selectedZID: newSelectedZID})
     }
-    // setSelectedAFromPrev = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + 'a'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
-    // setSelectedBFromPrev = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + 'b'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
-    // setSelectedCFromPrev = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + 'c'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
-    // setSelectedDFromPrev = ()=>{
-    //     let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 2) + 'd'
-    //     this.setState({selectedZID: newSelectedZID})
-    // }
+
+    // This removes one letter from selectedZID, taking the user back to what was previously selected
     setSelectedBackOne = ()=>{
         let newSelectedZID = this.state.selectedZID.slice(0, this.state.selectedZID.length - 1)
         this.setState({selectedZID: newSelectedZID})
     }
+
+    // Handles change, mostly for the inputs
     handleChange = (prop, val)=>{
         this.setState({
             [prop]: val
         })
     }
+
+    // 
     sendToDatabase = (prop, val)=>{
         const aID = this.state.adventure_id
         axios.put(`/api/buildinfotodatabase`, {prop, val, aID})
     }
+
+    // 
     createNewRow(prop, val){
         const aID = this.state.adventure_id
-        let newZID = `${this.state.selectedZID}`
-        // console.log(`here it is agin`, newZID)
+        let newZID = `${this.state.selectedZID}`        
         axios.post(`/api/create_new_row`, {newZID, aID})
         .then(()=>{
             this.sendToDatabase(prop, val)
         })
     }
+
+    // 
     addOrUpdate(prop, val){
         let movingTo = this.state.selectedZID        
         const aID = this.state.adventure_id;
@@ -130,44 +99,67 @@ class BuildComponents extends React.Component {
             }
         })
     }
+
+    // 
     viewTextToggle = (prop, val)=>{
         this.setState({
             [prop]: val
         })
     }
+
+    viewTextToggleLessInvoked = (prop, val)=>{
+        return (
+            ()=>{                
+                this.setState({
+                    [prop]: val
+                })
+            }
+        )
+    }
+
+    // 
     addTitle = ()=>{
         const {adventure_id, adventureTitle} = this.state
         axios.post(`/api/add_title`, {adventure_id, adventureTitle})
     }
+
+    // 
     handleToggelChangeZ = ()=>{
         this.setState({
             [`${this.state.selectedZID}_z_toggle`]: false
         })
     }
-    handleToggelChangeA = ()=>{
+
+    handleToggelChangeABCD = (ABCD)=>{
         let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
         this.setState({
-            [`${backOne}_a_toggle`]: false
+            [`${backOne}_${ABCD}_toggle`]: false
         })
     }
-    handleToggelChangeB = ()=>{
-        let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
-        this.setState({
-            [`${backOne}_b_toggle`]: false
-        })
-    }
-    handleToggelChangeC = ()=>{
-        let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
-        this.setState({
-            [`${backOne}_c_toggle`]: false
-        })
-    }
-    handleToggelChangeD = ()=>{
-        let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
-        this.setState({
-            [`${backOne}_d_toggle`]: false
-        })
-    }
+    // handleToggelChangeA = ()=>{
+    //     let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
+    //     this.setState({
+    //         [`${backOne}_a_toggle`]: false
+    //     })
+    // }
+    // handleToggelChangeB = ()=>{
+    //     let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
+    //     this.setState({
+    //         [`${backOne}_b_toggle`]: false
+    //     })
+    // }
+    // handleToggelChangeC = ()=>{
+    //     let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
+    //     this.setState({
+    //         [`${backOne}_c_toggle`]: false
+    //     })
+    // }
+    // handleToggelChangeD = ()=>{
+    //     let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
+    //     this.setState({
+    //         [`${backOne}_d_toggle`]: false
+    //     })
+    // }
     editButtonZ = ()=>{
         return (
                 <button
@@ -177,13 +169,14 @@ class BuildComponents extends React.Component {
                 >edit</button> 
             )
     }
-    editButtonA = ()=>{
+    editButtonABCD = (ABCD)=>{
+        let backOne = this.state.selectedZID.split('').slice(0, this.state.selectedZID.length - 1).join('')
         return (
                 <button
                     onClick={
-                        this.handleToggelChangeA
+                        this.viewTextToggleLessInvoked(`${backOne}_${ABCD}_toggle`, false)
                     }
-                >edit</button> 
+                >edit</button>
             )
     }
     editButtonB = ()=>{
@@ -424,7 +417,7 @@ class BuildComponents extends React.Component {
                             this.state[`${backOne}_a_toggle`] ? (
                                 <div className='a_item_aa_input_and_add'>
                                     <div>{this.state[`${backOne}_a`]}</div>
-                                    <div>{this.editButtonA()}</div>
+                                    <div>{this.editButtonABCD('a')}</div>
                                 </div>
                             ):(
                                 <div className='a_item_aa_input_and_add'>
@@ -496,7 +489,7 @@ class BuildComponents extends React.Component {
                             this.state[`${backOne}_b_toggle`] ? (
                                 <div  className='a_item_aa_input_and_add'>                                    
                                     <div>{this.state[`${backOne}_b`]}</div>
-                                    <div>{this.editButtonB()}</div>
+                                    <div>{this.editButtonABCD('b')}</div>
                                 </div>
                             ):(
                                 <div  className='a_item_aa_input_and_add'>
@@ -568,7 +561,7 @@ class BuildComponents extends React.Component {
                             this.state[`${backOne}_c_toggle`] ? (
                                 <div className='a_item_aa_input_and_add'>                                    
                                     <div>{this.state[`${backOne}_c`]}</div>
-                                    <div>{this.editButtonC()}</div>
+                                    <div>{this.editButtonABCD('c')}</div>
                                 </div>
                             ):(
                                 <div className='a_item_aa_input_and_add'>
@@ -641,7 +634,7 @@ class BuildComponents extends React.Component {
                             this.state[`${backOne}_d_toggle`] ? (
                                 <div className='a_item_aa_input_and_add'>                                    
                                     <div>{this.state[`${backOne}_d`]}</div>
-                                    <div>{this.editButtonD()}</div>
+                                    <div>{this.editButtonABCD('d')}</div>
                                 </div>
                             ):(
                                 <div className='a_item_aa_input_and_add'>
