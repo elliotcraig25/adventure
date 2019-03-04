@@ -434,16 +434,16 @@ class BuildComponents extends React.Component {
 
     render(){
         // console.log(this.state.adventure_id)
-        let backLetter = this.state.selectedZID.split('').pop()
+        // let backLetter = this.state.selectedZID.split('').pop()
         let backBackLetter = this.state.selectedZID.split('').slice(this.state.selectedZID.length - 2)[0]
         console.log({backBackLetter})
         return ( 
             <div className='main_build'>
                 <div className='container'> 
                     {this.aColumn()}
-                    {this.branchLinesStructure(`${backBackLetter}`, `${backLetter}`)}
+                    {/* {this.branchLinesStructure(`${backBackLetter}`, `${backLetter}`)} */}
                     {this.bColumn()}
-                    {this.branchLinesStructure('a', 'x')}
+                    {/* {this.branchLinesStructure('a', 'x')} */}
                     {this.cColumn()}
                 </div>
                 <TreeDashboard />

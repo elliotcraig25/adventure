@@ -10,7 +10,9 @@ class SidebarLinks extends React.Component {
     render(){
         return (
             <div className='sidebar_links'>
-                Links
+                <div>Home</div><br/>
+                <div>Make</div><br/>
+                <div>Choose</div><br/>
             </div>
         )
     }

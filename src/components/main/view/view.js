@@ -7,7 +7,7 @@ class ViewComponents extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            categories: ['popular', 'very popular', 'trending', 'your adventures', 'featured', 'very very popular', 'fantasy', 'sci-fi', 'all'],
+            categories: ['all', 'popular', 'very popular', 'trending', 'featured', 'very very popular', 'fantasy', 'sci-fi'],
             categoryReturn: []
         };
     };

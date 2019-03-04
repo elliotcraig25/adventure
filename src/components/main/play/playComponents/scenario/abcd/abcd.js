@@ -63,7 +63,7 @@ class Abcd extends React.Component {
     }
     whatToRender = ()=>{
         if(!this.props.z_type){
-            return (                
+            return (
                 <div>Loading</div>
             )
         }else if(this.props.z_type === 'default' && this.props[`${this.props.oID}Text`]){
@@ -79,7 +79,7 @@ class Abcd extends React.Component {
                 </div>
             )
         }else{
-            return (                
+            return (
                 <div>Start Over</div>
             )
         }
