@@ -34,7 +34,22 @@
 @media only screen and (max-width: 1528px) {
   .head-side-main {
       grid-template-columns: 18px 54px 72px 36px 1fr 0px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-rows: 36px 36px 36px 36px 9px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 1fr 1fr 1fr 1fr 36px 36px 18px 18px;
+      grid-template-rows: 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 1fr 1fr 1fr 1fr 36px 36px 18px 18px;
+  }
+  .a_item_aa {
+    grid-template-columns: 9px 1fr 36px 54px 18px 18px 9px;
+  }
+  .b_item_ab {
+    grid-template-columns: 9px 1fr 36px 54px 18px 18px 9px;
+  }
+  .c_item_ac {
+    grid-template-columns: 9px 1fr 36px 54px 18px 18px 9px;
+  }
+  .d_item_ad {
+    grid-template-columns: 9px 1fr 36px 54px 18px 18px 9px;
+  }
+  .item_z {
+    grid-template-columns: 9px 1fr 27px 9px 18px 18px 9px 27px 54px 9px;
   }
 } 
 

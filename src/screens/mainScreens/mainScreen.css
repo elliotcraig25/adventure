@@ -3,10 +3,10 @@
 } */
 
 .head-side-main {
-    background-image: url(../../assets/grid___png_file_transparent__by_alexandoria_d4ym86u-fullview.png);
-    background-repeat: repeat-y repeat-x;
+    /* background-image: url(../../assets/grid___png_file_transparent__by_alexandoria_d4ym86u-fullview.png);
+    background-repeat: repeat-y repeat-x; */
     background-size: 120px;
-    background-color: whitesmoke;
+    background-color: lightgray;
     height: 100vh;
     width: 100%;
     display: grid;
