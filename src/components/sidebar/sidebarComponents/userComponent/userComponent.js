@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {updateUser} from './../../../../ducks/reducer';
+import BranchIcon from '../../../../assets/branchicon.png';
 
 class UserComponent extends React.Component {
     constructor(props){
@@ -91,9 +92,9 @@ class UserComponent extends React.Component {
                 <div className='profile_pic_boarder_top'></div>
                 <div className='profile_pic_boarder_bottom'></div>
                 <div className='user_boarder_bottom'></div>
-                <div className='profile_pic'>
+                <img className='profile_pic' src={BranchIcon} alt='' height='100%' width='100%'>
                     
-                </div>
+                </img>
                 <div className='name_place'>Guest</div>
                 <div className='loggin_register_one'>
                     
@@ -113,7 +114,9 @@ class UserComponent extends React.Component {
             <div className='user_component_child_logging_in'>
                 <div className='login_border_top'></div>
                 <div className='login_border_bottom'></div>
-                <div className='profile_pic_three'></div>
+                <img className='profile_pic_three' src={BranchIcon} alt='' height='100%' width='100%'>
+                    
+                </img>
                 <input 
                     className='loggin_in_input_one'
                     type='text'
@@ -146,9 +149,9 @@ class UserComponent extends React.Component {
             <div className='user_component_child_registering'>
                 <div className='registering_border_top'></div>
                 <div className='registering_border_bottom'></div>
-                <div className='profile_pic_two'>
+                <img className='profile_pic_two' src={BranchIcon} alt='' height='100%' width='100%'>
                     
-                </div>
+                </img>
                 <input 
                     className='registering_input_one'
                     type='text'
@@ -199,9 +202,9 @@ class UserComponent extends React.Component {
                 <div className='profile_pic_boarder_top'></div>
                 <div className='profile_pic_boarder_bottom'></div>
                 <div className='user_boarder_bottom'></div>
-                <div className='profile_pic'>
+                <img className='profile_pic' src={BranchIcon} alt='' height='100%' width='100%'>
                     
-                </div>
+                </img>
                 <div className='name_place'>{this.props.username}</div>
                 <div className='loggin_register_one'>
                     <button onClick={this.logout}>
