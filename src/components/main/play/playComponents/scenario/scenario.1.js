@@ -1,3 +1,5 @@
+// 
+
 import React from 'react';
 
 import Abcd from './abcd/abcd';
@@ -28,7 +30,7 @@ class Scenario extends React.Component {
 
     componentDidUpdate(prevProps){
         if(prevProps!==this.props){
-            console.log('scenario: in componenet did update')
+            // console.log('scenario: in componenet did update')
             // console.log('scenario prevProps:', prevProps)
             // console.log('scenario this.props:', this.props)
             this.getZType()
@@ -37,7 +39,7 @@ class Scenario extends React.Component {
 
     getZType = ()=>{
         if(this.props.id.adventure_id && this.state.zCur){
-            console.log(`get Z Type is running`, this.state.zCur)
+            // console.log(`get Z Type is running`, this.state.zCur)
             axios.get(`/api/abcdoption/${this.props.id.adventure_id}/${this.state.zCur}`)
             .then(res=>{
                 // this.setState({info: res.data})
@@ -203,7 +205,7 @@ class Scenario extends React.Component {
     // }
     whichOptionsExist(){
         if(this.props.z && this.props.a && this.props.b && this.props.c && this.props.d){
-            console.log(`which exist all defined`)
+            // console.log(`which exist all defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
@@ -224,7 +226,7 @@ class Scenario extends React.Component {
                 </div>
             )
         }else if(this.props.z && this.props.a && this.props.b && this.props.c && !this.props.d){
-            console.log(`which exist Z A B and C defined`)
+            // console.log(`which exist Z A B and C defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
@@ -242,7 +244,7 @@ class Scenario extends React.Component {
                 </div>
             )
         }else if(this.props.z && this.props.a && this.props.b && !this.props.c && !this.props.d){
-            console.log(`which exist Z A and B defined`)
+            // console.log(`which exist Z A and B defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
@@ -257,7 +259,7 @@ class Scenario extends React.Component {
                 </div>
             )
         }else if(this.props.z && this.props.a && !this.props.b && !this.props.c && !this.props.d){
-            console.log(`which exist Z and A defined`)
+            // console.log(`which exist Z and A defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
@@ -269,7 +271,7 @@ class Scenario extends React.Component {
                 </div>
             )
         }else if(this.props.z && !this.props.a && !this.props.b && !this.props.c && !this.props.d){
-            console.log(`which exist Z defined`)
+            // console.log(`which exist Z defined`)
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
@@ -281,7 +283,7 @@ class Scenario extends React.Component {
                 </div>
             ) 
         }else{
-            console.log(`which exist not defined`) 
+            // console.log(`which exist not defined`) 
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
@@ -298,7 +300,7 @@ class Scenario extends React.Component {
         // console.log(this.props.id.adventure_id)
         // console.log(this.state.aLoop) 
         // console.log(this.state.zCur)
-        console.log(`scenario rendering`)
+        // console.log(`abc 123`)
         return (
             this.whichOptionsExist()
         )

@@ -41,6 +41,8 @@ app.post(`/getcategories`, viewCtrl.getCategoryItems);
 
 app.get(`/playinfo/:id`, playCtrl.getPlayInfo);
 
+app.get(`/api/allplayinfo/:id`, playCtrl.getAllPlayInfo);
+
 app.get(`/api/abcdoption/:aid/:zid`, playCtrl.getOption);
 
 app.post(`/api/user`, userCtrl.getUser);

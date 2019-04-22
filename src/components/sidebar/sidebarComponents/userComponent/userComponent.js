@@ -121,11 +121,12 @@ class UserComponent extends React.Component {
                     className='loggin_in_input_one'
                     type='text'
                     value={username}
-                onChange={(e)=>{
-                    this.handleChange(
-                        'username', e.target.value
-                    );
-                }}
+                    onChange={(e)=>{
+                        this.handleChange(
+                            'username', e.target.value
+                        )
+                    }
+                }
                 />
                 <input 
                     className='loggin_in_input_two'

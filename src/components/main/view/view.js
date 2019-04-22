@@ -14,14 +14,14 @@ class ViewComponents extends React.Component {
     componentDidMount(){
         this.state.categories.forEach((ele)=>{
             axios.post(`/getcategories`, {ele})
-                .then(res=>{
-                    // console.log(res.data)
-                    this.setState({
-                        categoryReturn: [...this.state.categoryReturn, res.data]
-                    })
-                }).catch(err=>{
-                    console.log(err);
-                });
+            .then(res=>{
+                // console.log(res.data)
+                this.setState({
+                    categoryReturn: [...this.state.categoryReturn, res.data]
+                })
+            }).catch(err=>{
+                console.log(err);
+            });
         });
     };
     createCategories = ()=>{

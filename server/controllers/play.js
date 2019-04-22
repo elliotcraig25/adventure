@@ -10,6 +10,14 @@ module.exports = {
         // res.status(200).send(titleInfo);
         res.status(200).send(titleInfo);
     },
+    getAllPlayInfo: async (req, res)=>{
+        const db = req.app.get('db');
+        let allInfo = await db.play.getAllFromAdventure(
+            {id: req.params.id}
+        )
+        console.log('all the info', allInfo)
+        res.status(200).send(allInfo);
+    },
     getOption: async (req, res)=>{
         const {aid, zid} = req.params;
         // console.log(aid);

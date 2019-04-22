@@ -20,7 +20,7 @@ class Abcd extends React.Component {
 
     componentDidUpdate(prevProps, prevState){        
         if(prevProps!==this.props){ 
-            console.log('abcd: in componenet did update')
+            // console.log('abcd: in componenet did update')
             // console.log('abcd prevProps', prevProps)
             // console.log('abcd this.props', this.props)
             this.getNewOptions()
@@ -29,7 +29,7 @@ class Abcd extends React.Component {
 
     getNewOptions = ()=>{
         if(this.props.aID && this.props.zID && this.props.oID === 'z'){
-            console.log(`${this.props.oID}: get new options is running`) 
+            // console.log(`${this.props.oID}: get new options is running`) 
             axios.get(`/api/abcdoption/${this.props.aID}/${this.props.zID}`) 
             .then((res)=>{
                 this.setState({info: res.data})
@@ -85,7 +85,7 @@ class Abcd extends React.Component {
         }
     }
     render(){
-        console.log(`abcd rendering`)
+        // console.log(`abcd rendering`)
         return (
             <div>
                 {this.whatToRender()}

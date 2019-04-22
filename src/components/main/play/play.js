@@ -3,7 +3,7 @@ import './play.css';
 import axios from 'axios';
 
 import TitleAndName from './playComponents/titleAndName/titleAndName';
-import Scenario from './playComponents/scenario/scenario';
+import Scenario from './playComponents/scenario/scenario.1';
 
 class PlayComponents extends React.Component {
     constructor(props){
@@ -23,12 +23,25 @@ class PlayComponents extends React.Component {
         
     }
     getPlayInfo = ()=>{
-        if(this.state.adventureID){            
-            axios.get(`/playinfo/${this.state.adventureID.adventure_id}`) 
-            .then(res=>{this.setState({
-                title: res.data.adventure_title,
-                user: res.data.username
-            })})
+        if(this.state.adventureID){
+            axios.get(`/api/allplayinfo/${this.state.adventureID.adventure_id}`).then(
+                res=>{
+                    console.log(res.data)
+                    this.setState(
+                        {dataObject: res.data}
+                    )
+                }
+            )
+            
+            axios.get(`/playinfo/${this.state.adventureID.adventure_id}`).then(
+                res=>{
+                    console.log('does it work here')
+                    this.setState({
+                        title: res.data.adventure_title,
+                        user: res.data.username
+                    })
+                }
+            )
         }
     }
     render(){
@@ -37,7 +50,7 @@ class PlayComponents extends React.Component {
         return (
             <div className='main_play_two'>
                 <TitleAndName title={this.state.title} user={this.state.user}/>                 
-                <Scenario id={this.state.adventureID}/> 
+                <Scenario id={this.state.adventureID} dataObject={this.state.dataObject}/>
                 {/* character sheet component */}
             </div>
         )
