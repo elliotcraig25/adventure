@@ -301,6 +301,13 @@ class Scenario extends React.Component {
         // console.log(this.state.aLoop) 
         // console.log(this.state.zCur)
         // console.log(`abc 123`)
+        if(this.props.dataObject){            
+            console.log(this.props.dataObject[this.props.dataObject.findIndex(ele=>ele.z_id === this.state.zCur)].z)
+            console.log(this.props.dataObject[this.props.dataObject.findIndex(ele=>ele.z_id === this.state.zCur)].a)
+            console.log(this.props.dataObject[this.props.dataObject.findIndex(ele=>ele.z_id === this.state.zCur)].b)
+            console.log(this.props.dataObject[this.props.dataObject.findIndex(ele=>ele.z_id === this.state.zCur)].c)
+            console.log(this.props.dataObject[this.props.dataObject.findIndex(ele=>ele.z_id === this.state.zCur)].d)
+        }
         return (
             this.whichOptionsExist()
         )
