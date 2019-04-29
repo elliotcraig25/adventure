@@ -24,14 +24,14 @@ class PlayComponents extends React.Component {
     }
     getPlayInfo = ()=>{
         if(this.state.adventureID){
-            axios.get(`/api/allplayinfo/${this.state.adventureID.adventure_id}`).then(
-                res=>{
-                    console.log(res.data)
-                    this.setState(
-                        {dataObject: res.data}
-                    )
-                }
-            )
+            // axios.get(`/api/allplayinfo/${this.state.adventureID.adventure_id}`).then(
+            //     res=>{
+            //         console.log(res.data)
+            //         this.setState(
+            //             {dataObject: res.data}
+            //         )
+            //     }
+            // )
             
             axios.get(`/playinfo/${this.state.adventureID.adventure_id}`).then(
                 res=>{
@@ -50,7 +50,9 @@ class PlayComponents extends React.Component {
         return (
             <div className='main_play_two'>
                 <TitleAndName title={this.state.title} user={this.state.user}/>                 
-                <Scenario id={this.state.adventureID} dataObject={this.state.dataObject}/>
+                <Scenario id={this.state.adventureID} 
+                    // dataObject={this.state.dataObject}
+                />
                 {/* character sheet component */}
             </div>
         )
