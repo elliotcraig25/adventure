@@ -78,6 +78,11 @@ class Scenario extends React.Component {
             zCur: 'z'
         })
     } 
+    joinWith = (letter)=>{
+        this.setState({
+            zCur: this.state.zCur + letter
+        })
+    }
     joinWithA = ()=>{
         this.setState({
             zCur: this.state.zCur + 'a'
