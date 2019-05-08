@@ -2,7 +2,7 @@ import React from 'react';
 import './mainScreen.css';
 import Header from '../../components/header/header';
 import Sidebar from '../../components/sidebar/sidebar';
-import PlayComponent from '../../components/main/play/play';
+import PlayComponent from '../../components/main/play/play.1';
 
 class PlayInterface extends React.Component {
     constructor(props){

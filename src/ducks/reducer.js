@@ -12,9 +12,11 @@ const initialState = {
     c: true,
     cText: '',
     d: true,
-    dText: ''
+    dText: '',
+    data: []
 }
 
+const PLZ_UPDATE_ALL_DATA = 'PLZ_UPDATE_ALL_DATA';
 const UPDATE_USER = 'UPDATE_USER';
 
 const UPDATEREDUXZABCD = 'UPDATEREDUXZABCD';
@@ -23,6 +25,14 @@ const UPDATEREDUXA = 'UPDATEREDUXA';
 const UPDATEREDUXB = 'UPDATEREDUXB';
 const UPDATEREDUXC = 'UPDATEREDUXC';
 const UPDATEREDUXD = 'UPDATEREDUXD';
+
+export function updateAllData(userObj){
+    // console.log('you have hit here', userObj)
+    return {
+        type: PLZ_UPDATE_ALL_DATA,
+        payload: userObj
+    }
+}
 
 export function updateUser(userObj){
     return {
@@ -78,6 +88,14 @@ export default function reducer(
 ){
     const {type, payload} = action;
     switch(type){
+        case PLZ_UPDATE_ALL_DATA:
+            const {
+                data
+            } = payload
+            return {
+                ...state,
+                data
+            };
         case UPDATE_USER:
             const {
                 user_id, username, profile_pic

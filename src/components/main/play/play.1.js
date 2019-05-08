@@ -29,6 +29,9 @@ class PlayComponents extends React.Component {
         if(this.state.adventureID){
             axios.get(`/api/allplayinfo/${this.state.adventureID.adventure_id}`).then(
                 res=>{
+                    let theData = res.data
+                    console.log('this is the res data', theData)
+                    this.props.updateAllData({data: theData})
                     console.log('xyz', res.data)
                     this.setState(
                         {dataObject: res.data},
