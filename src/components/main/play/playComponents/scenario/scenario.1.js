@@ -23,7 +23,7 @@ class Scenario extends React.Component {
     componentDidMount(){
         this.setState({
             id: this.props.id.adventure_id
-        });        
+        });      
     }
 
     componentDidUpdate(prevProps){
@@ -172,17 +172,33 @@ class Scenario extends React.Component {
         return 'joinWith' + choice;
     };
     whichOptionsExist(){
+        console.log('hit here', this.props.dataObject)
+        let dataIndex = 0
+        let zData = undefined
+        let aData = undefined
+        let bData = undefined
+        let cData = undefined
+        let dData = undefined
+        if(this.props.dataObject){
+            dataIndex = this.props.dataObject.findIndex(ele=>ele.z_id === this.state.zCur)
+            zData = this.props.dataObject[dataIndex].z
+            aData = this.props.dataObject[dataIndex].a
+            bData = this.props.dataObject[dataIndex].b
+            cData = this.props.dataObject[dataIndex].c
+            dData = this.props.dataObject[dataIndex].d
+        }
+        console.log({aData},{bData},{cData},{dData},)
         if(this.props.a || this.props.b || this.props.c || this.props.d){
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
-                        <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>
+                        <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'} text={zData}/> 
                     </div>
                     {
                         this.props.a  ?
                         (
                             <div onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
-                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'} allData={this.props.dataObject}/>
+                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'} text={aData}/>
                             </div>
                         ):(
                             <></>
@@ -192,7 +208,7 @@ class Scenario extends React.Component {
                         this.props.b  ?
                         (
                             <div onClick={this[this.whereThisShouldGo('B')]} className='options_b'>
-                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'}/>
+                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'b'} text={bData}/>
                             </div>
                         ):(
                             <></>
@@ -202,7 +218,7 @@ class Scenario extends React.Component {
                         this.props.c  ?
                         (
                             <div onClick={this[this.whereThisShouldGo('C')]} className='options_c'>
-                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'c'}/>
+                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'c'} text={cData}/>
                             </div>
                         ):(
                             <></>
@@ -212,7 +228,7 @@ class Scenario extends React.Component {
                         this.props.d  ?
                         (
                             <div onClick={this[this.whereThisShouldGo('D')]} className='options_d'>
-                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'d'}/>
+                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'d'} text={dData}/>
                             </div>
                         ):(
                             <></>
@@ -220,14 +236,14 @@ class Scenario extends React.Component {
                     }
                 </div>
             )
-        }else{
+        }else if(this.props.z){
             return (
                 <div className='scenario_and_options'>
                     <div className='the_scenario'>
-                        <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'}/>  
+                        <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'z'} text={zData}/>
                     </div>
-                    <div onClick={this['startOver']} className='options_a'>
-                        <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
+                    <div onClick={()=>this.startOver()} className='options_a'>
+                        <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'} text='Start Over'/>
                     </div>
                 </div>
             ) 

@@ -68,16 +68,16 @@ class Abcd extends React.Component {
             return (
                 <div>Loading</div>
             )
-        }else if(this.props.z_type === 'default' && this.props[`${this.props.oID}Text`]){
+        }else if(this.props.z_type === 'default' && this.props.text){
             return (
                 <div>
-                    {this.props[`${this.props.oID}Text`]}
+                    {this.props.text}
                 </div>
             )
         }else if(this.props.z_type.split(' ')[0] === 'loop'){
             return (
                 <div>
-                    {this.props[`${this.props.oID}Text`]}
+                    {this.props.text}
                 </div>
             )
         }else{
@@ -102,11 +102,11 @@ const mapToProps = reduxState => {
         b: reduxState.b,
         c: reduxState.c,
         d: reduxState.d,
-        zText: reduxState.zText,
-        aText: reduxState.aText,
-        bText: reduxState.bText,
-        cText: reduxState.cText,
-        dText: reduxState.dText,
+        // zText: reduxState.zText,
+        // aText: reduxState.aText,
+        // bText: reduxState.bText,
+        // cText: reduxState.cText,
+        // dText: reduxState.dText,
         z_type: reduxState.z_type
     }
 };
