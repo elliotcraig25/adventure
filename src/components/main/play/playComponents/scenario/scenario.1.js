@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Abcd from './abcd/abcd';
+import Abcd from './abcd/abcd.1';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {updateReduxZABCD} from '../../../../../ducks/reducer';
@@ -182,7 +182,7 @@ class Scenario extends React.Component {
                         this.props.a  ?
                         (
                             <div onClick={this[this.whereThisShouldGo('A')]} className='options_a'>
-                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'}/>
+                                <Abcd zID={this.state.zCur} aID={this.props.id.adventure_id} oID={'a'} allData={this.props.dataObject}/>
                             </div>
                         ):(
                             <></>
