@@ -3,7 +3,7 @@
 import React from 'react';
 
 import Abcd from './abcd/abcd.2';
-import axios from 'axios';
+// import axios from 'axios';
 import {connect} from 'react-redux';
 import {updateReduxZABCD} from '../../../../../ducks/reducer';
 
@@ -33,43 +33,42 @@ class Scenario extends React.Component {
     }
 
     getZType = ()=>{
-        if(this.props.id.adventure_id && this.state.zCur){
-            axios.get(`/api/abcdoption/${this.props.id.adventure_id}/${this.state.zCur}`)
-            .then(res=>{
-                if(res.data.z_type === 'default'){
-                    if(this.state.cLoop){
-                        this.setState({
-                            aLoop: null, 
-                            bLoop: null,
-                            cLoop: null,
-                            dLoop: null
-                        })
-                    }
-                }else if(res.data.z_type && res.data.z_type.split(' ')[0] === 'loop' && !this.state.aLoop){
-                    if(res.data.z_type.split(' ')[1] !== 'none' && res.data.z_type.split(' ')[1]){
-                        this.setState({
-                            aLoop: res.data.z_type.split(' ')[1]
-                        })
-                    }
-                    if(res.data.z_type.split(' ')[2] !== 'none' && res.data.z_type.split(' ')[2]){
-                        this.setState({
-                            bLoop: res.data.z_type.split(' ')[2]
-                        })
-                    }
-                    if(res.data.z_type.split(' ')[3] !== 'none' && res.data.z_type.split(' ')[3]){
-                        this.setState({
-                            cLoop: res.data.z_type.split(' ')[3]
-                        })
-                    }
-                    if(res.data.z_type.split(' ')[4] !== 'none' && res.data.z_type.split(' ')[4]){
-                        this.setState({
-                            dLoop: res.data.z_type.split(' ')[4]
-                        })
-                    }
-                }else{
-                    // console.log(`please dont loop`)
-                }                
-            }).catch(err=>console.log(err))
+        let currentZIndex = this.props.thisData.findIndex(ele=>ele.z_id === this.state.zCur)
+        console.log({currentZIndex})
+        let currentData = this.props.thisData[currentZIndex]
+        console.log({currentData})
+        if(currentData){
+            if(currentData.z_type === 'default'){
+                if(this.state.cLoop){
+                    this.setState({
+                        aLoop: null, 
+                        bLoop: null,
+                        cLoop: null,
+                        dLoop: null
+                    })
+                }
+            }else if(currentData.z_type && currentData.z_type.split(' ')[0] === 'loop' && !this.state.aLoop){
+                if(currentData.z_type.split(' ')[1] !== 'none' && currentData.z_type.split(' ')[1]){
+                    this.setState({
+                        aLoop: currentData.z_type.split(' ')[1]
+                    })
+                }
+                if(currentData.z_type.split(' ')[2] !== 'none' && currentData.z_type.split(' ')[2]){
+                    this.setState({
+                        bLoop: currentData.z_type.split(' ')[2]
+                    })
+                }
+                if(currentData.z_type.split(' ')[3] !== 'none' && currentData.z_type.split(' ')[3]){
+                    this.setState({
+                        cLoop: currentData.z_type.split(' ')[3]
+                    })
+                }
+                if(currentData.z_type.split(' ')[4] !== 'none' && currentData.z_type.split(' ')[4]){
+                    this.setState({
+                        dLoop: currentData.z_type.split(' ')[4]
+                    })
+                }
+            }
         }
     }
 
