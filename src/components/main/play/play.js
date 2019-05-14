@@ -7,7 +7,6 @@ import Scenario from './playComponents/scenario/scenario.2';
 import { connect } from 'react-redux';
 import {updateAllData} from '../../../ducks/reducer';
 
-// going to see if I can make it text compatible
 class PlayComponents extends React.Component {
     constructor(props){
         super(props);
